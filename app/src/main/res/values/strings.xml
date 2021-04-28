@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DoDamDoDam</string>
+    <string name="id_hint">아이디를 입력하세요.</string>
+    <string name="hint_password">비밀번호를 입력하세요.</string>
+    <string name="btn_login">로그인</string>
+    <string name="btn_register">회원 가입</string>
+
 </resources>
