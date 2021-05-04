@@ -1,4 +1,4 @@
-# SmartProjectApp
+# SmartProjectApp 모든 개발내용은 develop
 Smart mobile programming DoDamDoDam Project
 ### 현재 진행 사항 
 카카오 로그인과 회원가입한 사람 로그인 구현<br>
