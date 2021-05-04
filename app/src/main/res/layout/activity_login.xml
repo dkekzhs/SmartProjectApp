@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/MainColorLightBlue"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp" >
+
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,42 +21,54 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="#FFFFFF"
+
             android:hint="@string/id_hint"
-            android:inputType="textCapWords"
+            android:inputType="textEmailAddress"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/black"
+        />
 
         <EditText
             android:id="@+id/et_pass"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
             android:hint="@string/hint_password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/MainColorBlue"
+            android:layout_marginTop="10dp"
             android:text="@string/btn_login"
-            android:textColor="@color/MainColorBlue" />
+            android:textColor="@color/black"
 
+            />
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/MainColorBlue"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
             android:text="@string/btn_register"
-            android:textColor="@color/MainColorBlue" />
+            android:textColor="@color/black"
+
+            />
+
 
     </LinearLayout>
-</LinearLayout><!-- 버튼 컬러 drawable로 구현해야됨 -->
+
+
+
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/btn_kakao_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>
