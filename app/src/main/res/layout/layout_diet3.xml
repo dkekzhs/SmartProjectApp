@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/MainColorLightMid">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/diet" />
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="먹어야하는 음"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textColor="#000000"
+                android:bufferType="spannable"
+                android:text="1. 식사 전에 물을 마셔라\n물을 마시면 1시간 ~ 1시간 30분동안 신진대사가 24~30% 더욱 촉진되어 더 많은 칼로리가 소비될 수 있도록 도와줍니다. 특히, 식사 30분 전에 0.5리터를 마신 경우 그렇지 않은 경우보다 더 적은 양의 식사를 하고 44% 더 많은 체중 감량을 했다고 합니다." />
+
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="wrap_content"
+                android:layout_height="132dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textColor="#000000"
+                android:bufferType="spannable"
+                android:text="2. 아침에 계란을 먹어라\n 영양학적으로 좋은 성분이 많은 계란은 체중 감량에도 도움을 주는 식품 중에 하나입니다. 계란은 특히 아침에 곡물과 함께 먹어주면 36시간동안 더 적은 양의 식사를 하게 하고 체중과 지방을 감량하는데 도움을 준다고 해요." />
+
+            <TextView
+                android:id="@+id/textview4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textColor="#000000"
+                android:bufferType="spannable"
+                android:text="3. 코코넛 오일로 요리하라 \n 건강한 식품인 코코넛 오일은 다른 지방과 달리 건강에 좋은 중성지방이 높은 오일입니다. 하루에 코코넛 오일 125칼로리를 섭취하게 되면 256칼로리를 덜 먹는 효과를 가져온다고 합니다. 식욕을 감소시키고 신진 대사를 촉진하는 기능을 한다고 합니다." />
+
+            <TextView
+                android:id="@+id/textview5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textColor="#000000"
+                android:bufferType="spannable"
+                android:text="4. 정제가 덜 된 탄수화물을 먹어라\n정제된 탄수화물은 우리가 일반적으로 먹는 설탕, 백미, 백밀가루, 파스타 등이 있습니다. 이런 정제된 탄수화물은 더 빨리 허기를 느끼게 하고 혈당을 급격하게 올리는 역할을 하게 됩니다. 따라서 탄수화물을 섭취할 때에는 정제되지 않은 탄수화물인 현미밥, 통밀로 만든 빵 등을 섭취해야 합니다." />
+
+            <Button
+                android:id="@+id/back3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:backgroundTintMode="add"
+                android:text="back"
+                app:backgroundTint="#d3d3d3" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
