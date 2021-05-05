@@ -16,8 +16,9 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class MainActivity extends AppCompatActivity {
     TextView getid;
-    Button btn_logout;
-    private AlertDialog dialog;
+    Button btn_logout,btn_diet;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
         getid = findViewById(R.id.getid);
         btn_logout = findViewById(R.id.btn_logout);
-
+        btn_diet = findViewById(R.id.btn_diet);
         Intent intent = getIntent();
         String id = intent.getStringExtra("userID");
         String Platform = intent.getStringExtra("UserRegister");
         getid.setText(id + Platform);
+
+
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,5 +56,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_diet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, dietMain.class);
+                startActivity(intent);
+            }
+        });
     }
 }

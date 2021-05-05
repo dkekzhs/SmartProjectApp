@@ -57,15 +57,16 @@ public class loginActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try {
-                                        // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
+
                                         JSONObject jsonObject = new JSONObject(response);
                                         boolean success = jsonObject.getBoolean("success");
-                                        if (success) { // 로그인에 성공한 경우
+                                        if (success) { // 로그인 성공시
                                             Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                             intent.putExtra("userID", kakaoId);
                                             intent.putExtra("UserRegister","kakao"); //픽스 예정 intent로 넘겨줄지 or 세션을 통해서 로그인 관리할지
+
                                             startActivity(intent);
-                                        } else { // 로그인에 실패
+                                        } else { // 로그인 실패
                                             return;
                                         }
                                     } catch (JSONException e) {
@@ -139,14 +140,15 @@ public class loginActivity extends AppCompatActivity {
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 로그인에 성공한 경우
                                 String UserEmail = jsonObject.getString("UserEmail");
-                                String UserPwd = jsonObject.getString("UserPwd");
+                                String UserRegister = jsonObject.getString("UserRegister");
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
                                 dialog = builder.setMessage("로그인에 성공하였습니다.").setPositiveButton("확인", null).create();
                                 dialog.show();
                                 Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                 intent.putExtra("userID", UserEmail);
-                                intent.putExtra("UserRegister","register");
+                                intent.putExtra("UserRegister",UserRegister);
+
                                 startActivity(intent);
                             } else { // 로그인에 실패한 경우
                                 AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
