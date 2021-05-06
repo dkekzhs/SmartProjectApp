@@ -16,7 +16,7 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class MainActivity extends AppCompatActivity {
     TextView getid;
-    Button btn_logout,btn_diet;
+    Button btn_logout, btn_diet, btn_findPark;
 
 
     @Override
@@ -60,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, dietMain.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_findPark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, findPark.class);
                 startActivity(intent);
             }
         });

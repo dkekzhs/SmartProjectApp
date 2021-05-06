@@ -14,4 +14,8 @@
     <string name="join_email">이메일</string>
     <string name="join_password">비밀번호</string>
     <string name="join_passChk">비밀번호 확인</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--구글 MAP API-->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA-EL3j5jkZ3_qh5L17zEGgOCDqN9j7b2g</string>
 </resources>
