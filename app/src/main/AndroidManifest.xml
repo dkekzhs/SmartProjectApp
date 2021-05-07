@@ -3,8 +3,7 @@
     package="com.SMP.dodamdodam">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- 인터넷 사용 권한 설정 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 인터넷 사용 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -17,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoDamDoDam"
         android:usesCleartextTraffic="true">
-
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -38,11 +36,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.dietMain" />
+        <activity android:name=".Fragment.DiteTipFragment" />
         <activity android:name=".Diet.diet3" />
         <activity android:name=".Diet.diet2" />
         <activity android:name=".Diet.diet1" />
-        <activity android:name=".Activity.findPark"></activity>
+        <activity android:name=".Activity.findPark" />
     </application>
 
 </manifest>

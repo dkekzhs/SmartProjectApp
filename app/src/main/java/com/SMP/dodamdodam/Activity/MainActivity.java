@@ -1,22 +1,30 @@
 package com.SMP.dodamdodam.Activity;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.MenuItem;
 
+import com.SMP.dodamdodam.Fragment.MapsFrag;
+import com.SMP.dodamdodam.Fragment.DiteTipFragment;
+import com.SMP.dodamdodam.Fragment.UserFragment;
 import com.SMP.dodamdodam.R;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView getid;
-    Button btn_logout, btn_diet, btn_findPark;
+    private BottomNavigationView bottomNavigationView; // 바텀 네비게이션 뷰
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private UserFragment frag1;
+    private DiteTipFragment frag2;
+    private MapsFrag frag3;
+
+
+
 
 
     @Override
@@ -24,52 +32,66 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getid = findViewById(R.id.getid);
-        btn_logout = findViewById(R.id.btn_logout);
-        btn_diet = findViewById(R.id.btn_diet);
         Intent intent = getIntent();
-        String id = intent.getStringExtra("userID");
+        String userID = intent.getStringExtra("userID");
         String Platform = intent.getStringExtra("UserRegister");
-        getid.setText(id + Platform);
 
 
 
-        btn_logout.setOnClickListener(new View.OnClickListener() {
+
+        bottomNavigationView = findViewById(R.id.bottom);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-
-                if(Platform.equals("kakao")){
-                    UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-                        @Override
-                        public void onCompleteLogout() {
-                            Intent intent = new Intent(MainActivity.this, loginActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                        }
-
-                });
-            }
-                else if(Platform.equals("register")){
-                    Intent intent = new Intent(MainActivity.this, loginActivity.class);
-                    startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.main:
+                        setFrag(0);
+                        break;
+                    case R.id.tipbook:
+                        setFrag(1);
+                        break;
+                    case R.id.place:
+                        setFrag(2);
+                        break;
                 }
+                return true;
             }
         });
+        frag1 = new UserFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("userID",userID);
+        bundle.putString("UserRegister",Platform);
+        //fragment1로 번들 전달
+        frag1.setArguments(bundle);
 
-        btn_diet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, dietMain.class);
-                startActivity(intent);
-            }
-        });
 
-        btn_findPark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, findPark.class);
-                startActivity(intent);
-            }
-        });
+        frag2 = new DiteTipFragment();
+        frag3 = new MapsFrag();
+        setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
+
+    }
+
+
+
+
+    // 프래그먼트 교체가 일어나는 실행문이다.
+    private void setFrag(int n) {
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch (n) {
+            case 0:
+                ft.replace(R.id.MainFrame, frag1);
+                ft.commit();
+                break;
+            case 1:
+                ft.replace(R.id.MainFrame, frag2);
+                ft.commit();
+                break;
+            case 2:
+                ft.replace(R.id.MainFrame, frag3);
+                ft.commit();
+                break;
+
+        }
     }
 }

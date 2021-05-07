@@ -64,7 +64,7 @@ public class loginActivity extends AppCompatActivity {
                                             Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                             intent.putExtra("userID", kakaoId);
                                             intent.putExtra("UserRegister","kakao"); //픽스 예정 intent로 넘겨줄지 or 세션을 통해서 로그인 관리할지
-
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                             startActivity(intent);
                                         } else { // 로그인 실패
                                             return;
@@ -142,10 +142,9 @@ public class loginActivity extends AppCompatActivity {
                                 String UserEmail = jsonObject.getString("UserEmail");
                                 String UserRegister = jsonObject.getString("UserRegister");
 
-                                AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
-                                dialog = builder.setMessage("로그인에 성공하였습니다.").setPositiveButton("확인", null).create();
-                                dialog.show();
+
                                 Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.putExtra("userID", UserEmail);
                                 intent.putExtra("UserRegister",UserRegister);
 
