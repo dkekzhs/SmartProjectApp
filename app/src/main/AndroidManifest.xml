@@ -36,11 +36,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragment.DiteTipFragment" />
+        <activity android:name=".Fragment.DietTipFragment" />
         <activity android:name=".Diet.diet3" />
         <activity android:name=".Diet.diet2" />
         <activity android:name=".Diet.diet1" />
-        <activity android:name=".Activity.findPark" />
+        <activity android:name=".Activity.findPark"/>
     </application>
 
 </manifest>

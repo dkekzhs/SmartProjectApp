@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.SMP.dodamdodam.Fragment.MapsFrag;
-import com.SMP.dodamdodam.Fragment.DiteTipFragment;
+import com.SMP.dodamdodam.Fragment.DietTipFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
 import com.SMP.dodamdodam.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fm;
     private FragmentTransaction ft;
     private UserFragment frag1;
-    private DiteTipFragment frag2;
+    private DietTipFragment frag2;
     private MapsFrag frag3;
 
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         frag1.setArguments(bundle);
 
 
-        frag2 = new DiteTipFragment();
+        frag2 = new DietTipFragment();
         frag3 = new MapsFrag();
         setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
 
