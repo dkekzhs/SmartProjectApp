@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import com.SMP.dodamdodam.R;
 
-public class DiteTipFragment extends Fragment {
+public class DietTipFragment extends Fragment {
     ImageView diet1, diet2, diet3;
 
 
