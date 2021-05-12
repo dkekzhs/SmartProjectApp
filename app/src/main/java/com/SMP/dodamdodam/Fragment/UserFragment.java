@@ -13,8 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.SMP.dodamdodam.Activity.MainActivity;
 import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
+import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
@@ -43,6 +45,7 @@ public class UserFragment extends Fragment {
                     UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
                         @Override
                         public void onCompleteLogout() {
+                            SharedPreferenceBean.removeAllAttribute(getActivity().getApplicationContext());
                             Intent intent = new Intent(getActivity(), loginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
@@ -50,6 +53,7 @@ public class UserFragment extends Fragment {
 
                     });
                 } else if (Platform.equals("register")) {
+                    SharedPreferenceBean.removeAllAttribute(getActivity().getApplicationContext());
                     Intent intent = new Intent(getActivity(), loginActivity.class);
                     startActivity(intent);
                 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,6 +18,7 @@ import com.SMP.dodamdodam.Request.KakaoRequest;
 import com.SMP.dodamdodam.Request.LoginRequest;
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SessionCallback;
+import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -61,6 +64,8 @@ public class loginActivity extends AppCompatActivity {
                                         JSONObject jsonObject = new JSONObject(response);
                                         boolean success = jsonObject.getBoolean("success");
                                         if (success) { // 로그인 성공시
+                                            SharedPreferenceBean.setAttribute(getApplication(),"userId",kakaoId);
+                                            SharedPreferenceBean.setAttribute(getApplication(),"platform","kakao");
                                             Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                             intent.putExtra("userID", kakaoId);
                                             intent.putExtra("UserRegister","kakao"); //픽스 예정 intent로 넘겨줄지 or 세션을 통해서 로그인 관리할지
@@ -108,7 +113,13 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
             // 세션 콜백 등록
             Session.getCurrentSession().addCallback(sessionCallback);
-
+    if(SharedPreferenceBean.getAttribute(getApplication(),"userId")!=null && SharedPreferenceBean.getAttribute(getApplication(),"platform")!=null){
+        Intent intent = new Intent(loginActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("userID", SharedPreferenceBean.getAttribute(getApplication(),"userId"));
+        intent.putExtra("UserRegister", SharedPreferenceBean.getAttribute(getApplication(),"platform"));
+        startActivity(intent);
+    }
         btn_login = (Button)findViewById(R.id.btn_login); //로그인 버튼
         btn_register = (Button)findViewById(R.id.btn_register); //회원가입 버튼
 
@@ -142,13 +153,16 @@ public class loginActivity extends AppCompatActivity {
                                 String UserEmail = jsonObject.getString("UserEmail");
                                 String UserRegister = jsonObject.getString("UserRegister");
 
+                                SharedPreferenceBean.setAttribute(getApplication(),"userId",UserEmail);
+                                SharedPreferenceBean.setAttribute(getApplication(),"platform",UserRegister);
 
                                 Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.putExtra("userID", UserEmail);
                                 intent.putExtra("UserRegister",UserRegister);
-
                                 startActivity(intent);
+
+
                             } else { // 로그인에 실패한 경우
                                 AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
                                 dialog = builder.setMessage("아이디와 비밀번호를 확인해주세요.").setPositiveButton("확인", null).create();

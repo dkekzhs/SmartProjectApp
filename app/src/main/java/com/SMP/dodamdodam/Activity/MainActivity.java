@@ -13,6 +13,7 @@ import com.SMP.dodamdodam.Fragment.MapsFrag;
 import com.SMP.dodamdodam.Fragment.DiteTipFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
 import com.SMP.dodamdodam.R;
+import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String userID = intent.getStringExtra("userID");
         String Platform = intent.getStringExtra("UserRegister");
+
 
 
 
