@@ -24,7 +24,7 @@ public class UserFragment extends Fragment {
     TextView getid;
     Button btn_logout;
     private View view;
-    String userID="",Platform="";
+    String UserEmail="",UserPlatform="",UserName="";
 
     @Override
     public void onStart() {
@@ -33,15 +33,16 @@ public class UserFragment extends Fragment {
         btn_logout = getView().findViewById(R.id.btn_logout);
 
         Bundle bundle = getArguments();
-        userID = bundle.getString("userID");
-        Platform = bundle.getString("UserRegister");
-        getid.setText(userID + Platform);
+        UserEmail= bundle.getString("UserEmail");
+        UserPlatform = bundle.getString("UserPlatform");
+        UserName = bundle.getString("UserName");
+        getid.setText(UserEmail + UserPlatform+UserName);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (Platform.equals("kakao")) {
+                if (UserPlatform.equals("kakao")) {
                     UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
                         @Override
                         public void onCompleteLogout() {
@@ -52,9 +53,10 @@ public class UserFragment extends Fragment {
                         }
 
                     });
-                } else if (Platform.equals("register")) {
+                } else if (UserPlatform.equals("register")) {
                     SharedPreferenceBean.removeAllAttribute(getActivity().getApplicationContext());
                     Intent intent = new Intent(getActivity(), loginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             }

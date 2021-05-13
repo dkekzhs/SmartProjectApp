@@ -1,6 +1,7 @@
 package com.SMP.dodamdodam.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,14 +64,20 @@ public class loginActivity extends AppCompatActivity {
 
                                         JSONObject jsonObject = new JSONObject(response);
                                         boolean success = jsonObject.getBoolean("success");
+                                        String UserName = jsonObject.getString("UserName");
                                         if (success) { // 로그인 성공시
-                                            SharedPreferenceBean.setAttribute(getApplication(),"userId",kakaoId);
-                                            SharedPreferenceBean.setAttribute(getApplication(),"platform","kakao");
+                                            SharedPreferenceBean.setAttribute(getApplication(),"UserEmail",kakaoId);
+                                            SharedPreferenceBean.setAttribute(getApplication(),"UserPlatform","kakao");
+                                            SharedPreferenceBean.setAttribute(getApplication(),"UserName",UserName);
+                                            if(UserName.equals("")){
+                                                Intent intent = new Intent(loginActivity.this, infoUserActivity.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
+                                            }else{
                                             Intent intent = new Intent(loginActivity.this, MainActivity.class);
-                                            intent.putExtra("userID", kakaoId);
-                                            intent.putExtra("UserRegister","kakao"); //픽스 예정 intent로 넘겨줄지 or 세션을 통해서 로그인 관리할지
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                             startActivity(intent);
+                                            }
                                         } else { // 로그인 실패
                                             return;
                                         }
@@ -113,13 +120,7 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
             // 세션 콜백 등록
             Session.getCurrentSession().addCallback(sessionCallback);
-    if(SharedPreferenceBean.getAttribute(getApplication(),"userId")!=null && SharedPreferenceBean.getAttribute(getApplication(),"platform")!=null){
-        Intent intent = new Intent(loginActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("userID", SharedPreferenceBean.getAttribute(getApplication(),"userId"));
-        intent.putExtra("UserRegister", SharedPreferenceBean.getAttribute(getApplication(),"platform"));
-        startActivity(intent);
-    }
+
         btn_login = (Button)findViewById(R.id.btn_login); //로그인 버튼
         btn_register = (Button)findViewById(R.id.btn_register); //회원가입 버튼
 
@@ -145,23 +146,25 @@ public class loginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
-                            System.out.println("hongchul" + response);
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { // 로그인에 성공한 경우
                                 String UserEmail = jsonObject.getString("UserEmail");
                                 String UserRegister = jsonObject.getString("UserRegister");
+                                String UserName = jsonObject.getString("UserName");
 
-                                SharedPreferenceBean.setAttribute(getApplication(),"userId",UserEmail);
-                                SharedPreferenceBean.setAttribute(getApplication(),"platform",UserRegister);
-
-                                Intent intent = new Intent(loginActivity.this, MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra("userID", UserEmail);
-                                intent.putExtra("UserRegister",UserRegister);
-                                startActivity(intent);
-
+                                SharedPreferenceBean.setAttribute(getApplication(),"UserEmail",UserEmail);
+                                SharedPreferenceBean.setAttribute(getApplication(),"UserPlatform",UserRegister);
+                                SharedPreferenceBean.setAttribute(getApplication(),"UserName",UserName);
+                                if(UserName.equals("")){
+                                    Intent intent = new Intent(loginActivity.this, infoUserActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }else {
+                                    Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
 
                             } else { // 로그인에 실패한 경우
                                 AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);

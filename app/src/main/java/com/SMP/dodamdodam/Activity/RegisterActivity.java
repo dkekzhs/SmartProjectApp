@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            System.out.println("hongchul" + response);
+
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
 
@@ -128,18 +128,16 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            System.out.println("hongchul" + response);
+
                             JSONObject jsonObject = new JSONObject( response );
                             boolean success = jsonObject.getBoolean( "success" );
 
                             //회원가입 성공시
                             if(UserPwd.equals(PassCk)) {
                                 if (success) {
-
                                     Toast.makeText(getApplicationContext(), String.format("%s님 가입을 환영합니다.", UserEmail), Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(RegisterActivity.this, loginActivity.class);
                                     startActivity(intent);
-
                                     //회원가입 실패시
                                 } else {
                                     Toast.makeText(getApplicationContext(), "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.SMP.dodamdodam.Fragment.MapsFrag;
 import com.SMP.dodamdodam.Fragment.DietTipFragment;
@@ -23,22 +24,30 @@ public class MainActivity extends AppCompatActivity {
     private UserFragment frag1;
     private DietTipFragment frag2;
     private MapsFrag frag3;
-
-
-
-
-
+    private long backKeyPressedTime = 0;
+    private Toast toast;
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finish();
+            toast.cancel();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
-        String Platform = intent.getStringExtra("UserRegister");
 
-
-
+        String userID = SharedPreferenceBean.getAttribute(getApplication(),"UserEmail");
+        String Platform = SharedPreferenceBean.getAttribute(getApplication(),"UserPlatform");
+        String UserName = SharedPreferenceBean.getAttribute(getApplication(),"UserName");
 
 
         bottomNavigationView = findViewById(R.id.bottom);
@@ -61,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
         });
         frag1 = new UserFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("userID",userID);
-        bundle.putString("UserRegister",Platform);
+        bundle.putString("UserEmail",userID);
+        bundle.putString("UserPlatform",Platform);
+        bundle.putString("UserName", UserName);
         //fragment1로 번들 전달
         frag1.setArguments(bundle);
 
@@ -72,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
         setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
 
     }
-
-
 
 
     // 프래그먼트 교체가 일어나는 실행문이다.
