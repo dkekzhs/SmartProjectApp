@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 인터넷 사용 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-feature android:name="android.hardware.sensor.stepdetector" />
 
     <application
         android:name=".GlobalApplication"
@@ -16,13 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoDamDoDam"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.SplashActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
         <activity android:name=".Activity.infoUserActivity" />
 
         <meta-data
@@ -37,13 +31,19 @@
 
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.loginActivity"/>
-
-        <activity android:name=".Fragment.DiteTipFragment" />
+        <activity android:name=".Activity.loginActivity" />
         <activity android:name=".Diet.diet3" />
         <activity android:name=".Diet.diet2" />
         <activity android:name=".Diet.diet1" />
         <activity android:name=".Activity.findPark" />
+        <activity android:name=".Activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

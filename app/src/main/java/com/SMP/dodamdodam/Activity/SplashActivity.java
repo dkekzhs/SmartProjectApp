@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spalsh);
             if(SharedPreferenceBean.getAttribute(getApplication(),"UserEmail")!=null && SharedPreferenceBean.getAttribute(getApplication(),"UserPlatform")!=null
-                    && SharedPreferenceBean.getAttribute(getApplication(),"UserName")!=null) {
+                    && SharedPreferenceBean.getAttribute(getApplication(),"UserName")!="") {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

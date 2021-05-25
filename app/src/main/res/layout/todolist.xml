@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1.0"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/workcount"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.333"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right|center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="현재 걸음걸이 수"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtwork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|top"
+                    android:text="" />
+            </LinearLayout>
+
+            <com.dinuscxj.progressbar.CircleProgressBar
+                android:id="@+id/cpb_circlebar1"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                app:progress_text_size="50sp"
+                app:style="solid_line"
+                app:progress_stroke_width="20dp "
+                app:progress_stroke_cap="round"
+                app:progress_start_color="#FFBB00"
+                app:progress_end_color="#ABF200" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

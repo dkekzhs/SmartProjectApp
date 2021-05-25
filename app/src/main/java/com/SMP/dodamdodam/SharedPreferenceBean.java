@@ -23,4 +23,5 @@ public class SharedPreferenceBean { // 값 저장
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = pref.edit(); editor.clear(); editor.commit();
     }
+
 }
