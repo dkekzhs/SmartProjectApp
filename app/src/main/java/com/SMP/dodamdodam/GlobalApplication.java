@@ -11,7 +11,6 @@ import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
 
 
-
 public class GlobalApplication extends Application {
     private static GlobalApplication instance;
 
