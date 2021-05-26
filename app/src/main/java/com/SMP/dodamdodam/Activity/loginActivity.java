@@ -1,23 +1,19 @@
 package com.SMP.dodamdodam.Activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.EditText;
-
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.Request.KakaoRequest;
 import com.SMP.dodamdodam.Request.LoginRequest;
-import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SessionCallback;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.android.volley.RequestQueue;
@@ -74,9 +70,9 @@ public class loginActivity extends AppCompatActivity {
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                 startActivity(intent);
                                             }else{
-                                            Intent intent = new Intent(loginActivity.this, MainActivity.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            startActivity(intent);
+                                                Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
                                             }
                                         } else { // 로그인 실패
                                             return;
@@ -90,7 +86,7 @@ public class loginActivity extends AppCompatActivity {
                             RequestQueue queue = Volley.newRequestQueue(loginActivity.this);
                             queue.add(kakaoRequest);
                         }
-                        });
+                    });
         }
 
         @Override
@@ -114,12 +110,12 @@ public class loginActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-            // 세션 콜백 등록
-            Session.getCurrentSession().addCallback(sessionCallback);
+        // 세션 콜백 등록
+        Session.getCurrentSession().addCallback(sessionCallback);
 
         btn_login = (Button)findViewById(R.id.btn_login); //로그인 버튼
         btn_register = (Button)findViewById(R.id.btn_register); //회원가입 버튼
