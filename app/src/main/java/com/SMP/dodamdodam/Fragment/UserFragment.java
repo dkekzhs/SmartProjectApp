@@ -10,10 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.SMP.dodamdodam.Activity.MainActivity;
+import com.SMP.dodamdodam.Activity.findPark;
 import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
@@ -22,7 +21,7 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class UserFragment extends Fragment {
     TextView getid;
-    Button btn_logout,btn_calOpen;
+    Button btn_logout,btn_map;
     private View view;
     String UserEmail="",UserPlatform="",UserName="";
 
@@ -37,7 +36,14 @@ public class UserFragment extends Fragment {
         UserPlatform = bundle.getString("UserPlatform");
         UserName = bundle.getString("UserName");
         getid.setText(UserEmail + UserPlatform+UserName);
-
+        btn_map = getView().findViewById(R.id.btn_map);
+        btn_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), findPark.class);
+                startActivity(intent);
+            }
+        });
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,13 +67,7 @@ public class UserFragment extends Fragment {
                 }
             }
         });
-        btn_calOpen = getView().findViewById(R.id.btn_calopen);
-        btn_calOpen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
 

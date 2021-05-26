@@ -1,15 +1,18 @@
-package com.SMP.dodamdodam.Activity;
+package com.SMP.dodamdodam.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
@@ -17,8 +20,10 @@ import com.SMP.dodamdodam.SharedPreferenceBean;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import static android.content.Context.MODE_NO_LOCALIZED_COLLATORS;
 
-public class calendarActivity extends AppCompatActivity {
+public class CalendarFragment extends Fragment {
+
 
     public String fname=null;
     public String str=null;
@@ -29,21 +34,22 @@ public class calendarActivity extends AppCompatActivity {
     public String name,UserId;
     private Object CalendarFragment;
 
+    private View view;
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_calendar);
-        calendarView=findViewById(R.id.calendarView);
-        diaryTextView=findViewById(R.id.diaryTextView);
-        save_Btn=findViewById(R.id.save_Btn);
-        del_Btn=findViewById(R.id.del_Btn);
-        cha_Btn=findViewById(R.id.cha_Btn);
-        textView2=findViewById(R.id.txtcal2);
-        textView3=findViewById(R.id.txtcal);
-        contextEditText=findViewById(R.id.contextEditText);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.layout_calendar, container, false);
+        calendarView = view.findViewById(R.id.calendarView);
+        diaryTextView = view.findViewById(R.id.diaryTextView);
+        save_Btn = view.findViewById(R.id.save_Btn);
+        del_Btn = view.findViewById(R.id.del_Btn);
+        cha_Btn = view.findViewById(R.id.cha_Btn);
+        textView2 = view.findViewById(R.id.txtcal2);
+        textView3 = view.findViewById(R.id.txtcal);
+        contextEditText = view.findViewById(R.id.contextEditText);
         //로그인 및 회원가입 엑티비티에서 이름을 받아옴
-        name = SharedPreferenceBean.getAttribute(getApplication(),"UserName");
-
+        name = SharedPreferenceBean.getAttribute(getActivity().getApplication(), "UserName");
+        UserId = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserEmail");
         textView3.setText(name + "님의 달력 일기장");
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -55,16 +61,16 @@ public class calendarActivity extends AppCompatActivity {
                 textView2.setVisibility(View.INVISIBLE);
                 cha_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
-                diaryTextView.setText(String.format("%d / %d / %d",year,month+1,dayOfMonth));
+                diaryTextView.setText(String.format("%d / %d / %d", year, month + 1, dayOfMonth));
                 contextEditText.setText("");
-                checkDay(year,month,dayOfMonth,UserId);
+                checkDay(year, month, dayOfMonth, UserId);
             }
         });
         save_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveDiary(fname);
-                str=contextEditText.getText().toString();
+                str = contextEditText.getText().toString();
                 textView2.setText(str);
                 save_Btn.setVisibility(View.INVISIBLE);
                 cha_Btn.setVisibility(View.VISIBLE);
@@ -74,14 +80,16 @@ public class calendarActivity extends AppCompatActivity {
 
             }
         });
-    }
 
+
+        return view;
+    }
     public void  checkDay(int cYear,int cMonth,int cDay,String userID){
         fname=""+userID+cYear+"-"+(cMonth+1)+""+"-"+cDay+".txt";//저장할 파일 이름설정
         FileInputStream fis=null;//FileStream fis 변수
 
         try{
-            fis=openFileInput(fname);
+            fis=getActivity().openFileInput(fname);
 
             byte[] fileData=new byte[fis.available()];
             fis.read(fileData);
@@ -141,7 +149,7 @@ public class calendarActivity extends AppCompatActivity {
         FileOutputStream fos=null;
 
         try{
-            fos=openFileOutput(readDay,MODE_NO_LOCALIZED_COLLATORS);
+            fos=getActivity().openFileOutput(readDay,MODE_NO_LOCALIZED_COLLATORS);
             String content="";
             fos.write((content).getBytes());
             fos.close();
@@ -155,7 +163,7 @@ public class calendarActivity extends AppCompatActivity {
         FileOutputStream fos=null;
 
         try{
-            fos=openFileOutput(readDay,MODE_NO_LOCALIZED_COLLATORS);
+            fos=getActivity().openFileOutput(readDay,MODE_NO_LOCALIZED_COLLATORS);
             String content=contextEditText.getText().toString();
             fos.write((content).getBytes());
             fos.close();
@@ -164,5 +172,3 @@ public class calendarActivity extends AppCompatActivity {
         }
     }
 }
-
-
