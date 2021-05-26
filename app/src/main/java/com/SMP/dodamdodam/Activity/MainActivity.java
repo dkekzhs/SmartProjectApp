@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.SMP.dodamdodam.Fragment.DietTipFragment;
 import com.SMP.dodamdodam.Fragment.ToworkFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
+import com.SMP.dodamdodam.Fragment.WorkCountFragment;
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private UserFragment frag1;
     private DietTipFragment frag2;
     private ToworkFragment frag3;
-
+    private WorkCountFragment frag4;
     private long backKeyPressedTime = 0;
     private Toast toast;
     @Override
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         frag2 = new DietTipFragment();
         setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
         frag3 = new ToworkFragment();
-
+        frag4 = new WorkCountFragment();
     }
 
 
@@ -101,7 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.MainFrame,  frag3);
                 ft.commit();
                 break;
-
+            case 3:
+                ft.replace(R.id.MainFrame,frag4);
+                ft.commit();
+                break;
 
         }
     }

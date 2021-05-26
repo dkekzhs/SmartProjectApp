@@ -22,7 +22,7 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class UserFragment extends Fragment {
     TextView getid;
-    Button btn_logout;
+    Button btn_logout,btn_calOpen;
     private View view;
     String UserEmail="",UserPlatform="",UserName="";
 
@@ -59,6 +59,13 @@ public class UserFragment extends Fragment {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
+            }
+        });
+        btn_calOpen = getView().findViewById(R.id.btn_calopen);
+        btn_calOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
