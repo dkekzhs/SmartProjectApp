@@ -77,11 +77,12 @@ public class RegisterActivity extends AppCompatActivity {
                                 validate = true; //검증 완료
                                 check_button.setBackgroundColor(getResources().getColor(R.color.black));
                             }
-                            else {
+                            else if (!success){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                dialog = builder.setMessage("이미 존재하는 아이디입니다.").setNegativeButton("확인", null).create();
+                                dialog = builder.setMessage("이미 존재하는 아이디입니다.").setPositiveButton("확인", null).create();
                                 dialog.show();
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
 

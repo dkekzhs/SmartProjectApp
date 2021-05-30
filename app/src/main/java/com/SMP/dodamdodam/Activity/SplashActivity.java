@@ -17,7 +17,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spalsh);
             if(SharedPreferenceBean.getAttribute(getApplication(),"UserEmail")!=null && SharedPreferenceBean.getAttribute(getApplication(),"UserPlatform")!=null
                     && SharedPreferenceBean.getAttribute(getApplication(),"UserName")!="") {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);

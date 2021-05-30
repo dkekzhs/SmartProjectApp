@@ -23,7 +23,7 @@ public class UserFragment extends Fragment {
     TextView getid;
     Button btn_logout,btn_map;
     private View view;
-    String UserEmail="",UserPlatform="",UserName="";
+
 
     @Override
     public void onStart() {
@@ -31,10 +31,9 @@ public class UserFragment extends Fragment {
         getid = getView().findViewById(R.id.getid);
         btn_logout = getView().findViewById(R.id.btn_logout);
 
-        Bundle bundle = getArguments();
-        UserEmail= bundle.getString("UserEmail");
-        UserPlatform = bundle.getString("UserPlatform");
-        UserName = bundle.getString("UserName");
+        String UserEmail = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserEmail");
+        String UserPlatform = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserPlatform");
+        String UserName = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserName");
         getid.setText(UserEmail + UserPlatform+UserName);
         btn_map = getView().findViewById(R.id.btn_map);
         btn_map.setOnClickListener(new View.OnClickListener() {

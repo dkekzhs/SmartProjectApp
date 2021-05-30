@@ -11,10 +11,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.SMP.dodamdodam.Fragment.CalendarFragment;
 import com.SMP.dodamdodam.Fragment.DietTipFragment;
-import com.SMP.dodamdodam.Fragment.ToworkFragment;
+import com.SMP.dodamdodam.Fragment.MapsFragment;
+import com.SMP.dodamdodam.Fragment.TodoFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
+import com.SMP.dodamdodam.Fragment.WorkCountFragment;
 import com.SMP.dodamdodam.R;
-import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction ft;
     private UserFragment frag1;
     private DietTipFragment frag2;
-    private ToworkFragment frag3;
+    private TodoFragment frag3;
     private CalendarFragment frag4;
+    private WorkCountFragment frag5;
+    private MapsFragment frag6;
     private long backKeyPressedTime = 0;
     private Toast toast;
     @Override
@@ -46,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        String userID = SharedPreferenceBean.getAttribute(getApplication(),"UserEmail");
-        String Platform = SharedPreferenceBean.getAttribute(getApplication(),"UserPlatform");
-        String UserName = SharedPreferenceBean.getAttribute(getApplication(),"UserName");
+
 
 
         bottomNavigationView = findViewById(R.id.bottom);
@@ -73,18 +74,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         frag1 = new UserFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("UserEmail",userID);
-        bundle.putString("UserPlatform",Platform);
-        bundle.putString("UserName", UserName);
         //fragment1로 번들 전달
-        frag1.setArguments(bundle);
-
-
         frag2 = new DietTipFragment();
-        frag3 = new ToworkFragment();
+        frag3 = new TodoFragment();
         frag4 = new CalendarFragment();
-        setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
+        frag5 = new WorkCountFragment();
+        frag6 = new MapsFragment();
+        setFrag(5); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
 
     }
 
@@ -110,7 +106,13 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.MainFrame, frag4);
                 ft.commit();
                 break;
-
+            case 4:
+                ft.replace(R.id.MainFrame, frag5);
+                ft.commit();
+                break;
+            case 5:
+                ft.replace(R.id.MainFrame,frag6);
+                ft.commit();
         }
     }
 }

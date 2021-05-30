@@ -19,12 +19,13 @@ import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.dinuscxj.progressbar.CircleProgressBar;
 
-public class ToworkFragment extends Fragment  implements CircleProgressBar.ProgressFormatter{
+public class TodoFragment extends Fragment  implements CircleProgressBar.ProgressFormatter{
     CardView cardView1;
     MainActivity activity;
     private static final String DEFAULT_PATTERN = "%d%%";
     int getWork;
     CircleProgressBar circleProgressBar1;
+    String ChangeCount;
     @Override
     public void onStart() {
         super.onStart();
@@ -47,16 +48,19 @@ public class ToworkFragment extends Fragment  implements CircleProgressBar.Progr
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.todolist, container, false);
+        ChangeCount = SharedPreferenceBean.getAttribute(getContext(),"WorkCount");
+        if(ChangeCount==null){
+            ChangeCount = "0";
+        }
+        getWork = Integer.parseInt(ChangeCount);
         circleProgressBar1 = view.findViewById(R.id.cpb_circlebar1);
-
-
         circleProgressBar1.setProgress(getWork);
 
         cardView1 = view.findViewById(R.id.workcount);
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.setFrag(3);
+                activity.setFrag(4);
             }
         });
 
