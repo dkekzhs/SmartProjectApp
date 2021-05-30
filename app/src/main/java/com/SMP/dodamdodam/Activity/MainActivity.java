@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         frag4 = new CalendarFragment();
         frag5 = new WorkCountFragment();
         frag6 = new MapsFragment();
-        setFrag(5); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
+        setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
 
     }
 

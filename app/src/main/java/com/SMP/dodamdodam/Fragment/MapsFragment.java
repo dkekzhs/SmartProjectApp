@@ -30,7 +30,7 @@ import static android.content.Context.SENSOR_SERVICE;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 
-public class WorkCountFragment extends Fragment implements SensorEventListener {
+public class MapsFragment extends Fragment implements SensorEventListener {
     private static final int MY_PERMISSIONS_REQUEST_ACTIVITY_RECOGNITION = 2;
     TextView mwalknum;
     //현재 걸음 수
@@ -43,16 +43,15 @@ public class WorkCountFragment extends Fragment implements SensorEventListener {
     //private Sensor accelerormeterSensor;
     private Sensor stepCountSensor;
     private View view;
-    String  a = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"WorkCount");
 
     @Override
     public void onStart() {
         super.onStart();
-
         if(ContextCompat.checkSelfPermission(getContext(),
                 Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
             //ask for permission
             requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, MY_PERMISSIONS_REQUEST_ACTIVITY_RECOGNITION);
+            System.out.print("gg"+MY_PERMISSIONS_REQUEST_ACTIVITY_RECOGNITION);
         }
         if(stepCountSensor !=null){
             //센서의 속도 설정
@@ -60,10 +59,10 @@ public class WorkCountFragment extends Fragment implements SensorEventListener {
         }
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         view = inflater.inflate(R.layout.fragment_pedometer, container, false);
         //센서 연결[걸음수 센서를 이용한 흔듬 감지]
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -89,7 +88,7 @@ public class WorkCountFragment extends Fragment implements SensorEventListener {
             mSteps = (int) event.values[0] - mCounterSteps;
             mwalknum.setText(Integer.toString(mSteps));
 
-
+            SharedPreferenceBean.setAttribute(getContext(),"WorkCount",Integer.toString(mSteps));
         }
 
     }
@@ -101,7 +100,6 @@ public class WorkCountFragment extends Fragment implements SensorEventListener {
         super.onStop();
         if(sensorManager!=null){
             sensorManager.unregisterListener(this);
-            SharedPreferenceBean.setAttribute(getContext(),"WorkCount",Integer.toString(mSteps));
         }
     }
 }
