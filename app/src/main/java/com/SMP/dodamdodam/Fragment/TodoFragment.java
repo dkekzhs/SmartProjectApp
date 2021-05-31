@@ -29,7 +29,11 @@ public class TodoFragment extends Fragment  implements CircleProgressBar.Progres
     @Override
     public void onStart() {
         super.onStart();
-
+        ChangeCount = SharedPreferenceBean.getAttribute(getContext(),"WorkCount");
+        if(ChangeCount==null){
+            ChangeCount = "0";
+        }
+        getWork = Integer.parseInt(ChangeCount);
     }
 
     @Override
@@ -48,11 +52,7 @@ public class TodoFragment extends Fragment  implements CircleProgressBar.Progres
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.todolist, container, false);
-        ChangeCount = SharedPreferenceBean.getAttribute(getContext(),"WorkCount");
-        if(ChangeCount==null){
-            ChangeCount = "0";
-        }
-        getWork = Integer.parseInt(ChangeCount);
+
         circleProgressBar1 = view.findViewById(R.id.cpb_circlebar1);
         circleProgressBar1.setProgress(getWork);
 

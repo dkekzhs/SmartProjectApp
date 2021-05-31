@@ -21,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoDamDoDam"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.AchieveActivity"></activity>
+        <activity android:name=".Activity.AchieveActivity">
+
+
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

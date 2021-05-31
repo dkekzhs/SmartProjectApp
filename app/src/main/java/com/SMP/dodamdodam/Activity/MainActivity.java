@@ -14,7 +14,7 @@ import com.SMP.dodamdodam.Fragment.DietTipFragment;
 import com.SMP.dodamdodam.Fragment.MapsFragment;
 import com.SMP.dodamdodam.Fragment.TodoFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
-import com.SMP.dodamdodam.Fragment.WorkCountFragment;
+import com.SMP.dodamdodam.Fragment.WalkCountFragment;
 import com.SMP.dodamdodam.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private DietTipFragment frag2;
     private TodoFragment frag3;
     private CalendarFragment frag4;
-    private WorkCountFragment frag5;
+    private WalkCountFragment frag5;
     private MapsFragment frag6;
     private long backKeyPressedTime = 0;
     private Toast toast;
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         frag2 = new DietTipFragment();
         frag3 = new TodoFragment();
         frag4 = new CalendarFragment();
-        frag5 = new WorkCountFragment();
+        frag5 = new WalkCountFragment();
         frag6 = new MapsFragment();
         setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
 
