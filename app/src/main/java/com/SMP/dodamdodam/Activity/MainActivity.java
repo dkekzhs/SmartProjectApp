@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.SMP.dodamdodam.Fragment.CalendarFragment;
 import com.SMP.dodamdodam.Fragment.DietTipFragment;
 import com.SMP.dodamdodam.Fragment.MapsFragment;
+import com.SMP.dodamdodam.Fragment.TestFragment;
 import com.SMP.dodamdodam.Fragment.TodoFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
 import com.SMP.dodamdodam.Fragment.WalkCountFragment;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private CalendarFragment frag4;
     private WalkCountFragment frag5;
     private MapsFragment frag6;
+    private TestFragment frag7;
     private long backKeyPressedTime = 0;
     private Toast toast;
     @Override
@@ -69,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.calendar:
                         setFrag(3);
                         break;
+                    case R.id.Test:
+                        setFrag(6);
+                        break;
                 }
                 return true;
             }
@@ -80,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         frag4 = new CalendarFragment();
         frag5 = new WalkCountFragment();
         frag6 = new MapsFragment();
+        frag7 = new TestFragment();
         setFrag(0); // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택.
 
     }
@@ -113,6 +119,11 @@ public class MainActivity extends AppCompatActivity {
             case 5:
                 ft.replace(R.id.MainFrame,frag6);
                 ft.commit();
+                break;
+            case 6:
+                ft.replace(R.id.MainFrame,frag7);
+                ft.commit();
+                break;
         }
     }
 }

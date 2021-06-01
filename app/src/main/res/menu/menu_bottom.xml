@@ -26,5 +26,11 @@
         android:icon="@drawable/ic_baseline_place_24"
         android:title="캘린더"
         />
+    <item
+        android:id="@+id/Test"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_place_24"
+        android:title="테스트"
+        />
 
 </menu>
