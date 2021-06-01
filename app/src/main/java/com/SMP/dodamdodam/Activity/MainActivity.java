@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.tipbook:
                         setFrag(1);
                         break;
-                    case R.id.place:
+                    case R.id.todo:
                         setFrag(2);
                         break;
                     case R.id.calendar:
