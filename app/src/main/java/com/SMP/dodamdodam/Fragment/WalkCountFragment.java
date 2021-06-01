@@ -68,7 +68,7 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
     private Sensor stepCountSensor;
     private View view;
     private String now;
-    BarChart barChart;
+    BarChart barchart;
 
     @Override
     public void onStart() {
@@ -91,7 +91,7 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_pedometer, container, false);
      //값 가져오기
-        barChart = view.findViewById(R.id.barChart);
+        barchart = view.findViewById(R.id.barchart);
         //BarEntry를 담는 리스트
 
 
@@ -131,16 +131,10 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                         // Create a BarData object and assign it to the chart
                         BarData barData = new BarData(barSet);
                         // Display it as a percentage
+                        barData.setValueFormatter(new PercentFormatter());
+                        barchart.setData(barData);
                         barSet.setDrawValues(true);
-                        barChart.getAxisLeft().setDrawGridLines(false);
-                        barChart.getXAxis().setDrawGridLines(false);
-
-                        barChart.setDrawBarShadow(false);
-                        barChart.setTouchEnabled(false);
-                        barChart.setData(barData);
-                        barChart.setFitBars(false);
-                        barChart.animateY(1000);
-                        barChart.invalidate();
+                        barchart.invalidate();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
