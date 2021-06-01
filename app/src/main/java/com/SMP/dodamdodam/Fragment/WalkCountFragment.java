@@ -104,13 +104,13 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                         JSONObject jsonObject = new JSONObject(response);
                         JSONArray jsonArray = jsonObject.getJSONArray("WalkCount");
                         ArrayList<BarEntry> entries = new ArrayList<>();
-
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jObject = jsonArray.getJSONObject(i);  // JSONObject 추출
 
                             String Date = jObject.getString("Date");
                             String count = jObject.getString("count");
-                            entries.add(new BarEntry(i, Float.parseFloat(count)));
+                            entries.add(new BarEntry(i, Integer.parseInt(count)));
+
                             if (Date.equals(now)) {
                                 try {
                                     SharedPreferenceBean.setAttribute(getActivity().getApplication(), "walk", count);
@@ -134,6 +134,10 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                         barData.setValueFormatter(new PercentFormatter());
                         barchart.setData(barData);
                         barSet.setDrawValues(true);
+                        barchart.setDrawGridBackground(false);
+
+                        barchart.setTouchEnabled(false);
+                        barchart.animateY(1000);
                         barchart.invalidate();
 
                     } catch (JSONException e) {

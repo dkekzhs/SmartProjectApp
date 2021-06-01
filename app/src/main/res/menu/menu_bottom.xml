@@ -16,9 +16,8 @@
     <item
         android:id="@+id/place"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_place_24"
-        android:title="장소"
-        />
+        android:icon="@drawable/ic_baseline_assignment_24"
+        android:title="업적" />
 
     <item
         android:id="@+id/calendar"
