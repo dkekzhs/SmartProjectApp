@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.SMP.dodamdodam.Activity.AchieveActivity;
-import com.SMP.dodamdodam.Activity.findPark;
+import com.SMP.dodamdodam.Activity.findParkActivity;
 import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
@@ -40,7 +40,7 @@ public class UserFragment extends Fragment {
         btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), findPark.class);
+                Intent intent = new Intent(getActivity(), findParkActivity.class);
                 startActivity(intent);
             }
         });

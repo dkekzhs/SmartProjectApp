@@ -30,7 +30,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.SMP.dodamdodam.Activity.MainActivity;
-import com.SMP.dodamdodam.Activity.findPark;
+import com.SMP.dodamdodam.Activity.findParkActivity;
 import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
 
