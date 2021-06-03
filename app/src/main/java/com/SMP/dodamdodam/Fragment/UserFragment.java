@@ -14,8 +14,6 @@ import androidx.fragment.app.Fragment;
 
 import com.SMP.dodamdodam.Activity.findPark;
 import com.SMP.dodamdodam.Activity.loginActivity;
-import com.SMP.dodamdodam.Activity.tubetube;
-
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.kakao.usermgmt.UserManagement;
@@ -41,7 +39,7 @@ public class UserFragment extends Fragment {
         btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), tubetube.class);
+                Intent intent = new Intent(getActivity(), findPark.class);
                 startActivity(intent);
             }
         });

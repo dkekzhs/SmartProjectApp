@@ -52,7 +52,8 @@
         <activity android:name=".Diet.diet3" />
         <activity android:name=".Diet.diet2" />
         <activity android:name=".Diet.diet1" />
-        <activity android:name=".Activity.findPark" />
+        <activity android:name=".Activity.findParkActivity" />
+        <activity android:name=".Activity.infoUserActivity"/>
     </application>
 
 </manifest>

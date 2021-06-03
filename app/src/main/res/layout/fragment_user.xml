@@ -35,5 +35,14 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_logout"
         app:layout_constraintTop_toBottomOf="@+id/btn_logout" />
 
+    <Button
+        android:id="@+id/btn_ach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:text="업적보기"
+        app:layout_constraintStart_toStartOf="@+id/btn_map"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.findPark">
+    tools:context=".Activity.findParkActivity">
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
@@ -27,5 +27,16 @@
         android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:fabSize="mini" />
+
+    <Button
+        android:id="@+id/btnfindPark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공원 찾기"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

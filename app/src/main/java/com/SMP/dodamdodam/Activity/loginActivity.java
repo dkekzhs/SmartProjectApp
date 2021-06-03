@@ -57,11 +57,11 @@ public class loginActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     try {
-
                                         JSONObject jsonObject = new JSONObject(response);
                                         boolean success = jsonObject.getBoolean("success");
                                         String UserName = jsonObject.getString("UserName");
-                                        if (success) { // 로그인 성공시
+                                        Log.d("TAG",response);
+                                        if (success) { // 로그인 성공시`
                                             SharedPreferenceBean.setAttribute(getApplication(),"UserEmail",kakaoId);
                                             SharedPreferenceBean.setAttribute(getApplication(),"UserPlatform","kakao");
                                             SharedPreferenceBean.setAttribute(getApplication(),"UserName",UserName);

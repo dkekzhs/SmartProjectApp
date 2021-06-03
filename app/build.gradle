@@ -60,7 +60,9 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:2.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.3.0'
-    implementation 'com.dinuscxj:circleprogressbar:1.3.0' // CircleProgressBar
+    implementation 'com.dinuscxj:circleprogressbar:1.3.0'// CircleProgressBar
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.13'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'com.google.android.libraries.places:places:1.1.0'
 

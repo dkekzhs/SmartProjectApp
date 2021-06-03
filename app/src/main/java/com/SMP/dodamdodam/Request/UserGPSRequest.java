@@ -9,19 +9,19 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkRequest extends StringRequest {
+public class UserGPSRequest extends StringRequest {
 
-    final static private String URL = "http://116.34.4.118:8080/Ex/parkRequest2.php";
+    //서버 URL 설정(php 파일 연동)
+    final static private String URL = "http://116.34.4.118:8080/Ex/userLoc.php";
     private static final String TAG = "testlog?";
     private Map<String, String> map;
 
-    public ParkRequest(String ParkName, String LATITUDE, String LONGITUDE, Response.Listener<String> listener) {
-        super(Method.POST, URL, listener, null);
+    public UserGPSRequest(String LATITUDE, String LONGITUDE) {
+        super(Method.POST, URL, null, null);
 
         map = new HashMap<>();
-        map.put("ParkName", ParkName);
-        map.put("Latitude", LATITUDE);
-        map.put("Longitude", LONGITUDE);
+        map.put("LATITUDE", LATITUDE);
+        map.put("LONGITUDE", LONGITUDE);
         Log.d(TAG,"리퀘스트 요청 "+map );
     }
 
