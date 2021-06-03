@@ -21,10 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoDamDoDam"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.AchieveActivity">
-
-
-        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -55,6 +51,7 @@
         <activity android:name=".Diet.diet1" />
         <activity android:name=".Activity.findPark" />
         <activity android:name=".Activity.infoUserActivity"/>
+        <activity android:name=".Activity.AchieveActivity"/>
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -29,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -37,12 +39,16 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +57,7 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -61,7 +68,7 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
     private int mSteps = 0; // 카운트 수
     private int mSetpsinit=0; //걸음 초기값
     //리스너가 등록되고 난 후의 step count
-
+    private int perco=0;
     //센서 연결을 위한 변수
     private SensorManager sensorManager;
     //private Sensor accelerormeterSensor;
@@ -91,30 +98,44 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_pedometer, container, false);
      //값 가져오기
-        barChart = view.findViewById(R.id.barchart);
+        barChart = view.findViewById(R.id.barChart);
         //BarEntry를 담는 리스트
 
 
 
         now = Now(System.currentTimeMillis());
             Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+
                 @Override
                 public void onResponse(String response) {
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         JSONArray jsonArray = jsonObject.getJSONArray("WalkCount");
-                        ArrayList<BarEntry> entries = new ArrayList<>();
 
+
+                        ArrayList<BarEntry> entries = new ArrayList<>();
+                        String[] arr = new String[jsonArray.length()];
+                        Log.d("TAG", String.valueOf(arr.length));
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jObject = jsonArray.getJSONObject(i);  // JSONObject 추출
 
                             String Date = jObject.getString("Date");
                             String count = jObject.getString("count");
                             entries.add(new BarEntry(i, Float.parseFloat(count)));
+
+                            arr[i] = Date;
+
+
+
+
                             if (Date.equals(now)) {
                                 try {
-                                    SharedPreferenceBean.setAttribute(getActivity().getApplication(), "walk", count);
-                                    Log.e("TAG4", "세임타임");
+                                    mSetpsinit =returnNum(count);
+                                    perco = Integer.parseInt(count);
+                                    Log.e("TAG4", "세임타임" + perco);
+                                    mwalknum.setText(Integer.toString(perco));
+
                                 } catch (Exception e) {
 
                                     Log.e("TAG4", "화면 이동한 경우");
@@ -126,9 +147,45 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
 
                         }
 
+
+
+
+
+
                         // Add bars to a bar set
-                        BarDataSet barSet = new BarDataSet(entries, "Tenses");
+                        BarDataSet barSet = new BarDataSet(entries, "걸음 수");
                         BarData barData = new BarData(barSet);
+                        XAxis xAxisBottom = barChart.getXAxis();
+                        xAxisBottom.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+                        xAxisBottom.setValueFormatter(new ValueFormatter() {
+                            @Override
+                            public String getFormattedValue(float value) {
+                                switch ((int)value){
+                                    //write your logic here
+                                    case 0:
+                                        return arr[0];
+                                    case 1:
+                                        return arr[1];
+                                    case 2:
+                                        return arr[2];
+                                    case 3:
+                                        return arr[3];
+                                    default:
+                                        return arr[4];
+                                }
+                            }
+
+                        });
+
+
+                        xAxisBottom.setDrawGridLines(false);
+                        xAxisBottom.setGridLineWidth(0.01f);
+                        xAxisBottom.setGranularity(0.01f); // only intervals of 1 day
+                        int size = new Float(entries.get(entries.size()-1).getX() - entries.get(0).getX()).intValue();
+                        Log.d("TAG", String.valueOf(size));
+                        xAxisBottom.setLabelCount(size);
+
                         // Display it as a percentage
                         barSet.setDrawValues(true);
                         barChart.getAxisLeft().setDrawGridLines(false);
@@ -141,7 +198,9 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                         barChart.animateY(1000);
                         barChart.invalidate();
 
+
                     } catch (JSONException e) {
+                        Toast.makeText(getActivity(), "신체 활동 동의 후 걸어보세요", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 }
@@ -160,11 +219,6 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
         }
         mwalknum = view.findViewById(R.id.sensor);
 
-
-        if(SharedPreferenceBean.getAttribute(getActivity().getApplication(),"walk")!=null){
-            mwalknum.setText(SharedPreferenceBean.getAttribute(getActivity().getApplication(),"walk"));
-            mSetpsinit = Integer.parseInt(SharedPreferenceBean.getAttribute(getActivity().getApplication(),"walk"));
-        }
         return view;
     }
 
@@ -226,8 +280,11 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
 
                             if (Date.equals(now)) {
                                 try {
-                                    SharedPreferenceBean.setAttribute(getActivity().getApplication(), "walk", count);
-                                    Log.e("TAG4", "세임타임");
+                                    mSetpsinit =returnNum(count);
+                                    perco = Integer.parseInt(count);
+                                    Log.e("TAG4", "세임타임" + perco);
+                                    mwalknum.setText(Integer.toString(perco));
+                                    barChart.invalidate();
                                 } catch (Exception e) {
 
                                     Log.e("TAG4", "화면 이동한 경우");
@@ -239,6 +296,7 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(getActivity(), "신체 활동 동의 후 걸어보세요", Toast.LENGTH_SHORT).show();
                     }
                 }
             };
@@ -254,7 +312,11 @@ public class WalkCountFragment extends Fragment implements SensorEventListener {
         return DateTime;
     }
 
+public int returnNum(String num){
+       int num1 = Integer.parseInt(num);
+        return num1;
 
+}
 
 
 }

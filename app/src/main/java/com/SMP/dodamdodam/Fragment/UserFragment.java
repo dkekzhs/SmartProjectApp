@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.SMP.dodamdodam.Activity.AchieveActivity;
 import com.SMP.dodamdodam.Activity.findPark;
 import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
@@ -23,7 +24,7 @@ public class UserFragment extends Fragment {
     TextView getid;
     Button btn_logout,btn_map;
     private View view;
-
+    Button btn_ach;
 
     @Override
     public void onStart() {
@@ -66,7 +67,14 @@ public class UserFragment extends Fragment {
                 }
             }
         });
-
+        btn_ach = view.findViewById(R.id.btn_ach);
+        btn_ach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AchieveActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -1,10 +1,14 @@
 package com.SMP.dodamdodam.Activity;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,7 +21,21 @@ import com.SMP.dodamdodam.Fragment.TodoFragment;
 import com.SMP.dodamdodam.Fragment.UserFragment;
 import com.SMP.dodamdodam.Fragment.WalkCountFragment;
 import com.SMP.dodamdodam.R;
+import com.SMP.dodamdodam.SharedPreferenceBean;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView; // 바텀 네비게이션 뷰
@@ -32,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private TestFragment frag7;
     private long backKeyPressedTime = 0;
     private Toast toast;
+    private Dialog dialog;
     @Override
     public void onBackPressed() {
         if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
@@ -49,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getAch();
 
 
 
@@ -126,4 +145,54 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
+
+
+    public void getAch(){
+        String url3 = "http://116.34.4.118:8080/Ex/firstlogin.php";
+        StringRequest stringRequest3 = new StringRequest(Request.Method.POST,url3, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d("TAG",response);
+                try {
+                    JSONObject  jsonObject = new JSONObject(response);
+                   String  sucess = jsonObject.getString("Message");
+                   String onetime = jsonObject.getString("stauts");
+                   if(onetime.equals("ssucess")) {
+                       AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                       dialog = builder.setMessage(sucess).setPositiveButton("확인", null).create();
+                       dialog.show();
+                   }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(), "error : " + error.toString(), Toast.LENGTH_LONG).show();
+                Log.d("TAG", String.valueOf(error));
+
+            }
+        }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parms = new HashMap<>();
+                parms.put("UserEmail", SharedPreferenceBean.getAttribute(getApplication(),"UserEmail"));
+                return parms;
+
+            }
+        };
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        requestQueue2.add(stringRequest3);
+    }
+
 }
