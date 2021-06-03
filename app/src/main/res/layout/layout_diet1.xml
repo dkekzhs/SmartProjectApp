@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/MainColorLightMid"
-    tools:context="com.SMP.dodamdodam.MainActivity">
+    tools:context="com.SMP.dodamdodam.Activity.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

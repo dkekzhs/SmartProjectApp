@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.SMP.dodamdodam">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -21,10 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoDamDoDam"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.AchieveActivity">
-
-
-        </activity>
+        <activity android:name=".Activity.tubetube"/>
+        <activity android:name=".Activity.AchieveActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -40,16 +39,16 @@
             android:name=".Activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
             android:name=".Activity.MainActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.loginActivity" />
+        <activity android:name=".Activity.infoUserActivity" />
         <activity android:name=".Diet.diet3" />
         <activity android:name=".Diet.diet2" />
         <activity android:name=".Diet.diet1" />
