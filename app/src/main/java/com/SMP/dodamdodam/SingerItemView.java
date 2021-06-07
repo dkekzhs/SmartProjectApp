@@ -1,5 +1,8 @@
 package com.SMP.dodamdodam;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -7,11 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+
+import java.util.BitSet;
+
 public class SingerItemView extends LinearLayout {
 
     //어디서든 사용할 수 있게하려면
-    TextView textView, textView2, textView3, textView4;
-    ImageView imageView;
+    TextView textView, textView2;
+    ImageView imageView2;
 
     public SingerItemView(Context context) {
         super(context);
@@ -31,22 +38,16 @@ public class SingerItemView extends LinearLayout {
 
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
-        textView3 = findViewById(R.id.textView3);
-        textView4 = findViewById(R.id.textView4);
-        imageView = findViewById(R.id.imageView);
+        imageView2 = findViewById(R.id.imageView2);
     }
 
-    public void setVideoId(String videoId){
-        textView.setText(videoId);
+    public void setName(String name){
+        textView.setText(name);
     }
-    public void setTitle(String title){
-        textView2.setText(title);
+    public void setMobile(String mobile){
+        textView2.setText(mobile);
     }
-    public void setDescription(String description){
-        textView2.setText(description);
+    public void setImage(Bitmap resId){
+        imageView2.setImageBitmap(resId);
     }
-    public void setUrl(String url){
-        textView2.setText(url);
-    }
-
 }

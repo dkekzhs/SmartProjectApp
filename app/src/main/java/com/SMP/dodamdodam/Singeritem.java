@@ -1,57 +1,51 @@
 package com.SMP.dodamdodam;
 
-public class Singeritem {
-    String videoId;
-    String title;
-    String description;
-    String  url;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+
+public class Singeritem {
+    String name;
+    String mobile;
+    Bitmap resId;
 
     //생성
-    public Singeritem(String videoId, String title, String description, String url) {
-        this.videoId = videoId;
-        this.title = title;
-        this.description = description;
-        this.url = url;
+    public Singeritem(String name, String mobile, Bitmap resId) {
+        this.name = name;
+        this.mobile = mobile;
+        this.resId = resId;
     }
+
 
     //변수에 접근할 때 .OO 접근하기보다는 안전하게 getter, setter를 이용합니다.
-    public String getVideoId() {
-        return videoId;
+    public String getName() {
+        return name;
     }
 
-    public void setVideoId(String videoId) {
-        this.videoId = videoId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getDescription() {
-        return description;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public Bitmap getResId() {
+        return resId;
     }
 
     @Override
     public String toString() {
-        return "Singeritem{" +
-                "videoId='" + videoId + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", url='" + url + '\'' + '}';
+        return "SingerItem{" +
+                "name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", resId='" + resId + '\'' +
+                '}';
     }
 }
