@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class CalendarRequest extends StringRequest {
 
-    final static  private String URL="http://116.34.4.118:8080/Ex/Calendar.php";
+    final static  private String URL="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/Calendar.php";
     private Map<String, String> map;
 
     public CalendarRequest(String userName, String userMemo, String UserEmail, Response.Listener<String> listener){

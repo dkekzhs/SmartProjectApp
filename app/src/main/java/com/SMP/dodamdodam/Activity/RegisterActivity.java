@@ -1,10 +1,13 @@
 package com.SMP.dodamdodam.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -23,7 +26,8 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText join_email, join_password, join_pwck;
-    private Button join_button, check_button,Btn_delete;
+    private Button join_button,Btn_delete;
+    private ImageButton check_button;
     private AlertDialog dialog;
     private boolean validate = false;
 
@@ -75,12 +79,13 @@ public class RegisterActivity extends AppCompatActivity {
                                 dialog.show();
                                 join_email.setEnabled(false); //아이디값 고정
                                 validate = true; //검증 완료
-                                check_button.setBackgroundColor(getResources().getColor(R.color.black));
+                                check_button.setColorFilter(Color.parseColor("#00a000"), PorterDuff.Mode.SRC_IN);
                             }
                             else if (!success){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 dialog = builder.setMessage("이미 존재하는 아이디입니다.").setPositiveButton("확인", null).create();
                                 dialog.show();
+                                check_button.setColorFilter(Color.parseColor("#FF0000"), PorterDuff.Mode.SRC_IN);
                             }
 
                         } catch (JSONException e) {
@@ -106,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String UserEmail = join_email.getText().toString();
                 final String UserPwd = join_password.getText().toString();
                 final String PassCk = join_pwck.getText().toString();
-    System.out.println(validate);
+                System.out.println(validate);
 
                 //아이디 중복체크 했는지 확인
                 if (!validate) {

@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ParkRequest extends StringRequest {
 
-    final static private String URL = "http://116.34.4.118:8080/Ex/parkRequest2.php";
+    final static private String URL = "http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/parkRequest2.php";
     private static final String TAG = "testlog?";
     private Map<String, String> map;
 

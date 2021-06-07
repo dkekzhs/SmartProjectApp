@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/MainColorLightMid"
-    tools:context="com.SMP.dodamdodam.Activity.MainActivity">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="3dp"
-            android:src="@drawable/diet" />
-        <TextView
-            android:id="@+id/textview1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="아침은 왜 먹어야만 할까?"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="52dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center|left"
+            android:scaleType="centerCrop"
+            android:src="@drawable/diet"
+            app:backgroundTint="@color/MainColorLightMid" />
+
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="back" />
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:text="아침은 왜 먹어야만 할까?"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,51 +55,84 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="1. 활발한 뇌 활동\n두뇌 활동에 사용되는 에너지는 하루 400kcal 정도입니다.\n성인 하루 기초대사량 남자 2500kcal, 여자 2000kcal이라는 부분을 고려했을 때 뇌를사용하는데 엄청난 양의 칼로리가 소모되는 것을 알 수 있습니다.
-때문에 아침밥을 거르면 에너지가 부족하기 때문에오전 시간에는 체내 활동이 활발하지 못하게 되고정신적인 활동이 둔해질 수 있습니다." />
+                android:layout_marginTop="25dp"
+                android:text="1. 활발한 뇌 활동"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="두뇌 활동에 사용되는 에너지는 하루 400kcal 정도입니다. \n(성인 하루 기초 대사량 남자 2500kcal, 여자 2000kcal) \n뇌를 사용하면 엄청난 양의 칼로리가 소모되는 것을 알 수 있습니다. \n 때문에 아침밥을 거르면 에너지가 부족하기 때문에 오전 시간에는  \n체내 활동과 정신적인 활동이 둔해질 수 있습니다."
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textview6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="0dp"
+                android:text="2. 과식과 폭식을 예방"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textview3"
                 android:layout_width="wrap_content"
-                android:layout_height="132dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="2. 과식과 폭식을 예방\n아침을 거르면 식욕을 촉진시키는호르몬이 더 많이 분비되며 점심, 저녁에 폭식과 과식으로 이어질 수 있습니다. 건강을 위해 소식하는 사람이라면 점심과 저녁의 식사량을 억지로 줄이는 것 보다 아침을 먹는 것이 더 도움이 될 수 있습니다" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="아침을 거르면 식욕을 촉진하는 호르몬이 분비되어 \n점심, 저녁 식사에 폭식으로 이어질 수 있습니다.  \n건강을 위하는 사람이라면 점심, 저녁의 식사량을 \n억지로 줄이는 것 보다 아침을 먹는 것이 더 도움이 됩니다."
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:text="3. 자율신경 기능을 회복"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textview4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="3. 자율신경 기능을 회복\n지속적인 긴장으로 자극 돼 교감 신경이흥분된 상태나, 스트레스를 받은 상태가 오랫동안 지속 될 경우 자율 신경 균형이 깨지고 혈압과 혈당 수치가 올라가며 호흡이 불규칙해지고 가슴이 두근거릴 수 있습니다. 특히 아침 8시에는 코르티솔이라는 스트레스 호르몬이가장 많이 분비 되는 시간인데요. 아침식사를 해준다면 신체 리듬을 바로 잡는데 좋고, 자율신경의 기능 회복을 도와주기 때문에 좋습니다.
-" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="지속적인 긴장으로 자극 돼 교감 신경이 흥분된 상태나, 스트레스를 받은 상태가 오랫동안 지속 될 경우 \n자율 신경 균형이 깨지고 혈압과 혈당 수치가 올라가며 호흡이 불규칙해지고 가슴이 두근거릴 수 있습니다. \n특히 아침 8시에는 코르티솔이라는 스트레스 호르몬이 가장 많이 분비 되는 시간으로 아침식사를 한다면 신체 리듬을 바로 잡고 자율신경의 기능 회복을 도와줍니다. "
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textview7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:text="4. 아침에 먹으면 좋은 음식"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textview5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="4. 아침에 먹으면 좋은 음식!!\n 아침은 많이 먹을 필요는 없고, 잠에서 깨어난지 1시간 안에 먹는 것이 좋습니다. 복합 탄수화물, 비타민, 단백질, 미네랄이 풍부한음식을 먹는 것이 좋습니다. 복합 탄수화물에는 현미 등의 잡곡밥이나 미숫가루 등,단백질은 달걀, 두부비타민, 미네랄, 식이섬유가 풍부한 음식은시금치, 브로콜리, 양배추, 사과 등입니다." />
-
-            <Button
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:backgroundTintMode="add"
-                android:text="back"
-                app:backgroundTint="#d3d3d3" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="아침식사는 복합 탄수화물, 비타민, 단백질, 미네랄이 풍부한 음식을  \n기상 후 한 시간 내에 하는 것이 좋습니다. \n \n                                              추천음식! \n                    복합 탄수화물 : 현미, 잡곡밥, 미숫가루... \n                    단백질 : 달걀, 두부, 비타민, 미네랄... \n                    식이섬유 : 시금치, 브로콜리, 양배추, 사과...\n\n"
+                android:textColor="#000000" />
 
         </LinearLayout>
     </ScrollView>

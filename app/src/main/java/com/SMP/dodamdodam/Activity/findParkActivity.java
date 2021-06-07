@@ -3,6 +3,7 @@ package com.SMP.dodamdodam.Activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,7 +69,8 @@ public final class findParkActivity extends AppCompatActivity {
     @Nullable
     private GoogleMap googleMap;
     private HashMap _$_findViewCache;
-
+    private Switch findpark ;
+    ProgressDialog progressDialog;
     @NotNull
     public final String[] getPERMISSIONS() {
         return this.PERMISSIONS;
@@ -112,12 +115,25 @@ public final class findParkActivity extends AppCompatActivity {
                 findParkActivity.this.onMyLocationButtonClick();
             }
         }));
+        findpark = findViewById(id.btnfindPark);
+        findpark.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(findpark.isChecked() == true) {
+                    findParkActivity.this.addMarker();
+                    progressDialog  = new ProgressDialog(findParkActivity.this);
+                    progressDialog.setTitle("공원 찾는 중");
+                    progressDialog.setMessage("잠시만 기다려 주세요");
+                    progressDialog.show();
+                }
 
-        ((Button) this._$_findCachedViewById(id.btnfindPark)).setOnClickListener((OnClickListener) (new OnClickListener() {
-            public final void onClick(View it) {
-                findParkActivity.this.addMarker();
+                else{
+                    googleMap.clear();
+                    Toast.makeText(findParkActivity.this,"체크가 해제되어 주변공원이 뜨지 않습니다.",Toast.LENGTH_LONG);
+                }
             }
-        }));
+        });
+
     }
 
     public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions, @NotNull int[] grantResults) {
@@ -165,17 +181,17 @@ public final class findParkActivity extends AppCompatActivity {
     public final LatLng getMyLocation() {
         /* GPS_PROVIDER 쓰면 AVD에서는 실행이 되나 폰을 연결하고는 실행이 중단됨 */
 //            String locationProvider = LocationManager.GPS_PROVIDER;
-            String locationProvider = LocationManager.NETWORK_PROVIDER;
-            Object locationManage = this.getSystemService(Context.LOCATION_SERVICE);
-            if (locationManage == null) {
-                throw new NullPointerException("null cannot be cast to non-null type android.location.LocationManager");
-            } else {
-                LocationManager locationManager = (LocationManager) locationManage;
-                Location location = locationManager.getLastKnownLocation(locationProvider);
-                Location lastKnownLocation = location;
-                return new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-            }
+        String locationProvider = LocationManager.NETWORK_PROVIDER;
+        Object locationManage = this.getSystemService(Context.LOCATION_SERVICE);
+        if (locationManage == null) {
+            throw new NullPointerException("null cannot be cast to non-null type android.location.LocationManager");
+        } else {
+            LocationManager locationManager = (LocationManager) locationManage;
+            Location location = locationManager.getLastKnownLocation(locationProvider);
+            Location lastKnownLocation = location;
+            return new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
         }
+    }
 
     public final void onMyLocationButtonClick() {
         if (this.hasPermissions()) {
@@ -202,7 +218,7 @@ public final class findParkActivity extends AppCompatActivity {
     public final void addMarker() {
         googleMap.clear();
 
-        String url = "http://116.34.4.118:8080/Ex/parkRequest.php";
+        String url = "http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/parkRequest.php";
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -233,6 +249,7 @@ public final class findParkActivity extends AppCompatActivity {
                             Log.d("TAG", "markerOption complete");
 
                             googleMap.addMarker(markerOptions);
+                            progressDialog.dismiss();
                         }
                     }
                 } catch (JSONException e) {

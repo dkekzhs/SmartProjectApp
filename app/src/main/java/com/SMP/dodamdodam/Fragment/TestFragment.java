@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -29,12 +27,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.SMP.dodamdodam.Activity.MainActivity;
-import com.SMP.dodamdodam.Activity.findParkActivity;
-import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
-
-import com.SMP.dodamdodam.Request.WalkRequest;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -43,27 +36,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonObject;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -79,8 +60,8 @@ public class TestFragment extends Fragment {
     private String getImageName;
     Bitmap image;
 
-    String uploadurl ="http://116.34.4.118:8080/Ex/upload.php";
-    String getInfourl ="http://116.34.4.118:8080/Ex/getInfoImage.php";
+    String uploadurl ="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/upload.php";
+    String getInfourl ="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/getInfoImage.php";
     ProgressDialog progressDialog;
     String Url; //플라스크 서버 URL
     @Override
@@ -110,13 +91,14 @@ public class TestFragment extends Fragment {
             }
         });
         btn_upload.setEnabled(false);
+        btn_upload.setBackgroundColor(Color.parseColor("#868e96"));
         btn_upload.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View view){
                 progressDialog  = new ProgressDialog(getActivity());
                 progressDialog.setTitle("Uploading");
                 progressDialog.setMessage("Wait time");
                 progressDialog.show();
-                StringRequest  stringRequest = new StringRequest(Request.Method.POST,uploadurl, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,uploadurl, new Response.Listener<String>() {
 
                     @Override
                     public void onResponse(String response) {
@@ -126,10 +108,10 @@ public class TestFragment extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String a= jsonObject.getString("Message");
-                            Log.d("TAG", a);
 
 
-                            Url = "http://1e57d46ecb76.ngrok.io/predict?url="+a;
+
+                            Url = "http://e2aa6d03f83c.ngrok.io/predict?url="+a;
                             mThread  mthread =new mThread();
                             mthread.start();
 
@@ -154,7 +136,7 @@ public class TestFragment extends Fragment {
                         Map<String,String> parms = new HashMap<>();
                         String imageDate = imageToString(image);
                         parms.put("image",imageDate);
-                        parms.put("UserName",SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserName"));
+                        parms.put("UserName", SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserName"));
                         return parms;
 
                     }
@@ -226,7 +208,7 @@ public class TestFragment extends Fragment {
                 e.printStackTrace();
             }
             btn_upload.setEnabled(true);
-
+            btn_upload.setBackgroundColor(Color.parseColor("#FFE694"));
 
         } else if (requestCode == 101 && resultCode == getActivity().RESULT_CANCELED) {
             Toast.makeText(getActivity(), "취소", Toast.LENGTH_SHORT).show();
@@ -289,11 +271,10 @@ public class TestFragment extends Fragment {
     Handler mHandler = new Handler();
 
     public void requestImage(String Data){
-    StringRequest  stringRequest2 = new StringRequest(Request.Method.POST,getInfourl, new Response.Listener<String>() {
+    StringRequest stringRequest2 = new StringRequest(Request.Method.POST,getInfourl, new Response.Listener<String>() {
 
         @Override
         public void onResponse(String response) {
-                Log.d("TAG",response);
 
             try {
                JSONObject jsonObject = new JSONObject(response);
@@ -302,13 +283,12 @@ public class TestFragment extends Fragment {
                 String c= jsonObject.getString("c");
                 String d= jsonObject.getString("d");
                 String e= jsonObject.getString("e");
-                txttest2.setText(a+b+c+d+e);
+                txttest2.setText("100G : " +b +"\n 지방 : " + c + "\n 단백질 : " +d + "\n 탄수화물 : " + e
+                );
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-                Toast.makeText(getActivity().getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
 
         }

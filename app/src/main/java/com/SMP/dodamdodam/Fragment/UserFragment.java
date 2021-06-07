@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.SMP.dodamdodam.Activity.AchieveActivity;
 import com.SMP.dodamdodam.Activity.findParkActivity;
 import com.SMP.dodamdodam.Activity.loginActivity;
-import com.SMP.dodamdodam.Activity.tubetube;
-
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.kakao.usermgmt.UserManagement;
@@ -23,9 +22,10 @@ import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class UserFragment extends Fragment {
     TextView getid;
-    Button btn_logout,btn_map;
+    ImageButton btn_map;
+    ImageButton btn_logout;
     private View view;
-
+    ImageButton btn_ach;
 
     @Override
     public void onStart() {
@@ -36,12 +36,12 @@ public class UserFragment extends Fragment {
         String UserEmail = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserEmail");
         String UserPlatform = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserPlatform");
         String UserName = SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserName");
-        getid.setText(UserEmail + UserPlatform+UserName);
+        getid.setText(UserName);
         btn_map = getView().findViewById(R.id.btn_map);
         btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), tubetube.class);
+                Intent intent = new Intent(getActivity(), findParkActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +68,14 @@ public class UserFragment extends Fragment {
                 }
             }
         });
-
+        btn_ach = view.findViewById(R.id.btn_ach);
+        btn_ach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AchieveActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -83,4 +90,3 @@ public class UserFragment extends Fragment {
 
     }
 }
-

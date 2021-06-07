@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/MainColorLightMid"
+        android:background="@color/quantum_googgreen100"
         android:orientation="horizontal"
         android:padding="8dp">
 
@@ -15,19 +18,19 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="3dp"
-            android:src="@drawable/diet" />
+            android:visibility="visible"
+            app:srcCompat="@drawable/idea" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="다이어트 꿀팁!!!"
-            android:textColor="#ffffff"
-            android:textSize="20dp"
+            android:text="     다이어트 꿀팁!"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="36sp"
             android:textStyle="bold" />
 
     </LinearLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,17 +49,17 @@
                 android:orientation="vertical">
 
                 <FrameLayout
+
                     android:layout_width="match_parent"
+                    android:layout_height="250dp"
                     android:padding="12dp"
-                    android:layout_height="250dp">
+                    android:visibility="visible">
 
                     <ImageView
                         android:id="@+id/diet1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFFFF"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/coffeetime" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/diet_food" />
 
 
                 </FrameLayout>
@@ -69,11 +72,12 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="39dp"
+                        android:layout_height="46dp"
                         android:layout_marginRight="16dp"
                         android:background="#FFFFFF"
-                        android:src="@drawable/diet"/>
+                        app:srcCompat="@color/MainColorLightMid"
+                        tools:visibility="invisible" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,16 +85,17 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="아침은 무조건 먹어라?"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"/>
+                            android:text="                     아침은 무조건 먹어라?"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="그 진실을 알려드립니다."
+                            android:gravity="center"
+                            android:text="                   그 진실을 알려드립니다."
                             android:textColor="#FF0000" />
 
                     </LinearLayout>
@@ -109,17 +114,14 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:padding="12dp"
-                    android:layout_height="250dp">
+                    android:layout_height="233dp"
+                    android:padding="12dp">
 
                     <ImageView
                         android:id="@+id/diet2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFFFF"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/fitness" />
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="233dp"
+                        app:srcCompat="@drawable/exercise" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -130,11 +132,12 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="35dp"
+                        android:layout_height="40dp"
                         android:layout_marginRight="16dp"
                         android:background="#FFFFFF"
-                        android:src="@drawable/diet"/>
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/fitness" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -142,16 +145,16 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="근력운동은 꼭 해야할까?"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"/>
+                            android:text="                       근력운동은 꼭 해야할까?"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="근력운동의 중요성."
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:text="                          근력운동의 중요성."
                             android:textColor="#FF0000" />
 
                     </LinearLayout>
@@ -175,13 +178,9 @@
 
                     <ImageView
                         android:id="@+id/diet3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFFFF"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/dish" />
-
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/request" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -196,7 +195,8 @@
                         android:layout_height="30dp"
                         android:layout_marginRight="16dp"
                         android:background="#FFFFFF"
-                        android:src="@drawable/diet"/>
+                        android:src="@drawable/diet"
+                        android:visibility="invisible" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -206,14 +206,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="먹어야하는 음식"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"/>
+                            android:textColor="#FF0000" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="330dp"
                             android:layout_height="wrap_content"
-                            android:textColor="#FF0000" />
+                            android:text="                           먹어야하는 음식\n\n"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 

@@ -21,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,7 +48,7 @@ public class AchieveActivity extends AppCompatActivity
 
 
     public void getAch(){
-        String achurl = "http://116.34.4.118:8080/Ex/achieve.php";
+        String achurl = "http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/achieve.php";
         StringRequest stringRequest3 = new StringRequest(Request.Method.POST,achurl, new Response.Listener<String>() {
 
             @Override
@@ -78,7 +77,6 @@ public class AchieveActivity extends AppCompatActivity
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
 
             }

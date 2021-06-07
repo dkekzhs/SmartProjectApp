@@ -1,11 +1,5 @@
 package com.SMP.dodamdodam.Fragment;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import com.SMP.dodamdodam.Activity.MainActivity;
 import com.SMP.dodamdodam.R;
@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TodoFragment extends Fragment  implements CircleProgressBar.ProgressFormatter{
+public class TodoFragment extends Fragment implements CircleProgressBar.ProgressFormatter{
     private CardView cardView1;
     private MainActivity activity;
     private TextView txtWork;
@@ -70,7 +70,7 @@ public class TodoFragment extends Fragment  implements CircleProgressBar.Progres
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.todolist, container, false);
 
-        String url ="http://116.34.4.118:8080/Ex/gettodo.php";
+        String url ="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/gettodo.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
 
             @Override
@@ -119,7 +119,7 @@ public class TodoFragment extends Fragment  implements CircleProgressBar.Progres
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parms = new HashMap<>();
-                parms.put("UserEmail",SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserEmail"));
+                parms.put("UserEmail", SharedPreferenceBean.getAttribute(getActivity().getApplication(),"UserEmail"));
                 return parms;
 
             }

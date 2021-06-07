@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/quantum_amber50">
 
     <TextView
         android:id="@+id/txt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txt_register"
-        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/join_email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +23,6 @@
         android:id="@+id/join_email"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
         android:layout_marginBottom="32dp"
         android:hint="@string/join_email"
         android:inputType="textEmailAddress"
@@ -55,24 +54,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/check_button"
-        android:layout_width="75dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:text="확인"
-        app:layout_constraintBaseline_toBaselineOf="@+id/join_email"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
         android:layout_marginTop="68dp"
+        android:background="@color/ButtonColor"
         android:text="취소"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/join_button"
         app:layout_constraintTop_toBottomOf="@+id/join_passChk" />
 
@@ -80,9 +71,21 @@
         android:id="@+id/join_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/ButtonColor"
         android:text="가입"
+        android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/delete"
         app:layout_constraintStart_toStartOf="@+id/join_passChk" />
+
+    <ImageButton
+        android:id="@+id/check_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@color/quantum_amber50"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/join_email"
+        app:srcCompat="@drawable/check" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
