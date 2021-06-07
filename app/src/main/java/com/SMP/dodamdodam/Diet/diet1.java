@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -35,26 +36,6 @@ public class diet1 extends AppCompatActivity {
         textView3 = findViewById(R.id.textview3);
         textView4 = findViewById(R.id.textview4);
         textView5 = findViewById(R.id.textview5);
-
-        Spannable span1 = (Spannable) textView2.getText();
-        span1.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 11, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-        span1.setSpan(new AbsoluteSizeSpan(80), 0, 11, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-
-        Spannable span2 = (Spannable) textView3.getText();
-        span2.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 13, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-        span2.setSpan(new AbsoluteSizeSpan(80), 0, 13, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-
-        Spannable span3 = (Spannable) textView4.getText();
-        span3.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 14, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-        span3.setSpan(new AbsoluteSizeSpan(80), 0, 14, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-
-        Spannable span4 = (Spannable) textView5.getText();
-        span4.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 18, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-        span4.setSpan(new AbsoluteSizeSpan(80), 0, 18, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-
-
-
-
 
         ImageButton back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
