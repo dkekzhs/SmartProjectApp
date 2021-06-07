@@ -132,7 +132,7 @@ public class WeatherActivity extends AppCompatActivity {
                     //기온 받고 켈빈 온도를 섭씨 온도로 변경
                     double tempDo = (Math.round((tempK.getDouble("temp") - 273.15) * 100) / 100.0);
                     temView.setText(tempDo + "°C");
-
+                    Log.d("TAG", "날씨 : " + url);
                     //운동 판단
                     String in = "실내운동";
                     String out = "야외운동";
@@ -145,13 +145,12 @@ public class WeatherActivity extends AppCompatActivity {
                             keyword = in;
                         case "Snow" : // 눈
                             keyword = in;
-                        case "Atmosphere" : // 안개, 폭풍같은 대기
-                            keyword = in;
                         case "Clear" : // 맑음
                             keyword = out;
                         case "Clouds" : // 흐림
                             keyword = out;
-                        default:
+                        default: // 기본 설정
+                            keyword = in;
                             break;
                     }
                 } catch (JSONException e) {
