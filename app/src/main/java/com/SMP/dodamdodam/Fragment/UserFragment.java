@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.SMP.dodamdodam.Activity.AchieveActivity;
+import com.SMP.dodamdodam.Activity.WeatherActivity;
 import com.SMP.dodamdodam.Activity.findParkActivity;
 import com.SMP.dodamdodam.Activity.loginActivity;
 import com.SMP.dodamdodam.R;
@@ -26,6 +28,7 @@ public class UserFragment extends Fragment {
     ImageButton btn_logout;
     private View view;
     ImageButton btn_ach;
+    Button btn_weather;
 
     @Override
     public void onStart() {
@@ -73,6 +76,14 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AchieveActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_weather = view.findViewById(R.id.btn_weather);
+        btn_weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WeatherActivity.class);
                 startActivity(intent);
             }
         });

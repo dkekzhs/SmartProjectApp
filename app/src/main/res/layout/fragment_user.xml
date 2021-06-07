@@ -23,14 +23,14 @@
     <ImageButton
         android:id="@+id/btn_logout"
         android:layout_width="104dp"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
-        android:layout_marginBottom="348dp"
+        android:layout_marginBottom="459dp"
         android:background="@color/quantum_googgreen50"
         android:foregroundGravity="center"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_weather"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.077"
@@ -90,6 +90,18 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_ach"
         app:layout_constraintStart_toStartOf="@+id/btn_ach"
         app:layout_constraintTop_toBottomOf="@+id/btn_ach" />
+
+    <Button
+        android:id="@+id/btn_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="146dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

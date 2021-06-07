@@ -53,10 +53,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -139,9 +141,23 @@ public class tubetube extends AppCompatActivity {
         }
     }
 
-    public void getyoutube(){
+    public String getURLEncode(String content){
+        try {
+            return URLEncoder.encode(content, "utf-8");   // UTF-8
+            // return URLEncoder.encode(content, "euc-kr");  // EUC-KR
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-        String url4 = "http://d18f6be8cc89.ngrok.io/video_list?key=AIzaSyCqEZTPQlS48rUKlRxe2sMvV1UXpK4F3ZM&&query=%EC%9A%B4%EB%8F%99";
+    public void getyoutube(){
+        String keyword = getIntent().getStringExtra("weather");
+        String encodeKeyword = getURLEncode(keyword);
+        Log.d("TAG", "운동 추천 : " + keyword);
+        Log.d("TAG", "운동 추천 인코딩 : " + encodeKeyword);
+
+        String url4 = "http://1aa171b03a29.ngrok.io//video_list?key=AIzaSyCqEZTPQlS48rUKlRxe2sMvV1UXpK4F3ZM&&query=" + encodeKeyword;
         StringRequest stringRequest3 = new StringRequest(Request.Method.POST,url4, new Response.Listener<String>() {
             ListView listTest = findViewById(R.id.listTest);
             SingerAdapter adapter = new SingerAdapter();

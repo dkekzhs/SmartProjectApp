@@ -3,8 +3,16 @@ package com.SMP.dodamdodam.Activity;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,9 +29,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,14 +48,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class WeatherActivity extends AppCompatActivity {
-    TextView weatherView, temView;
-    Button getWeather;
-
+    TextView weatherView, temView, exerciseView;
+    Button getWeather, goTube;
+    String keyword;
     static RequestQueue requestQueue;
 
     @Override
@@ -55,6 +64,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         weatherView = findViewById(R.id.weatherView);
         temView = findViewById(R.id.temView);
+
         getWeather = findViewById(R.id.getAPI);
         getWeather.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +72,43 @@ public class WeatherActivity extends AppCompatActivity {
                 CurrentWeatherCall();
             }
         });
+        goTube = findViewById(R.id.btn_tube);
+        goTube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WeatherActivity.this, tubetube.class);
+                intent.putExtra("weather", keyword);
+                Log.d("TAG", "운동 추천 : " + keyword);
+                startActivity(intent);
+            }
+        });
+        if(requestQueue == null){
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+    }
+
+    @SuppressLint({"MissingPermission"})
+    @NotNull
+    public final LatLng getMyLocation() {
+        /* GPS_PROVIDER 쓰면 AVD에서는 실행이 되나 폰을 연결하고는 실행이 중단됨 */
+//            String locationProvider = LocationManager.GPS_PROVIDER;
+        String locationProvider = LocationManager.NETWORK_PROVIDER;
+        Object locationManage = this.getSystemService(Context.LOCATION_SERVICE);
+        if (locationManage == null) {
+            throw new NullPointerException("null cannot be cast to non-null type android.location.LocationManager");
+        } else {
+            LocationManager locationManager = (LocationManager) locationManage;
+            Location location = locationManager.getLastKnownLocation(locationProvider);
+            Location lastKnownLocation = location;
+
+            return new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+        }
     }
 
     private void CurrentWeatherCall() {
-        String city = "seoul";
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=e5684e67f5cda17d9c49b43ec08464c4\n";
+        String lat = Double.toString(getMyLocation().latitude);
+        String lon = Double.toString(getMyLocation().longitude);
+        String url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=e5684e67f5cda17d9c49b43ec08464c4\n";
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @SuppressLint("SetTextI18n")
@@ -79,6 +121,7 @@ public class WeatherActivity extends AppCompatActivity {
                     JSONArray weatherJson = jsonObject.getJSONArray("weather");
                     JSONObject weatherObj = weatherJson.getJSONObject(0);
 
+                    String weather_main = weatherObj.getString("main");
                     String weather = weatherObj.getString("description");
 
                     weatherView.setText(weather);
@@ -90,7 +133,27 @@ public class WeatherActivity extends AppCompatActivity {
                     double tempDo = (Math.round((tempK.getDouble("temp") - 273.15) * 100) / 100.0);
                     temView.setText(tempDo + "°C");
 
-
+                    //운동 판단
+                    String in = "실내운동";
+                    String out = "야외운동";
+                    switch (weather_main){
+                        case "Thunderstorm" : // 뇌우
+                            keyword = in;
+                        case "Drizzle" : // 이슬비
+                            keyword = in;
+                        case "Rain" : // 비
+                            keyword = in;
+                        case "Snow" : // 눈
+                            keyword = in;
+                        case "Atmosphere" : // 안개, 폭풍같은 대기
+                            keyword = in;
+                        case "Clear" : // 맑음
+                            keyword = out;
+                        case "Clouds" : // 흐림
+                            keyword = out;
+                        default:
+                            break;
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -104,8 +167,10 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+
                 return params;
             }
+
         };
 
         request.setShouldCache(false);
