@@ -25,7 +25,7 @@ public class SingerItemView extends LinearLayout {
     //어디서든 사용할 수 있게하려면
     TextView textView, textView2;
     ImageView imageView2;
-    LinearLayout linearLayout;
+
     public SingerItemView(Context context) {
         super(context);
         init(context);//인플레이션해서 붙여주는 역
@@ -45,7 +45,7 @@ public class SingerItemView extends LinearLayout {
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         imageView2 = findViewById(R.id.imageView2);
-        linearLayout = findViewById(R.id.listV);
+
     }
 
     public void setName(String name){
