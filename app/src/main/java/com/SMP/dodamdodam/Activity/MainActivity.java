@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getAch(){
-        String url3 = "http://116.34.4.118:8080/Ex/firstlogin.php";
+        String url3 = "http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/firstlogin.php";
         StringRequest stringRequest3 = new StringRequest(Request.Method.POST,url3, new Response.Listener<String>() {
 
             @Override

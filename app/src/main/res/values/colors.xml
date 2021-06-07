@@ -17,4 +17,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="red">#FF0000</color>
     <color name="green">#05EA0F</color>
+    <color name="ButtonColor">#FFE694</color>
+    <color name="TextColor">#FFE6CD</color>
 </resources>

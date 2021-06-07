@@ -3,46 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/quantum_googgreen50">
 
     <TextView
         android:id="@+id/getid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="128dp"
+        android:gravity="center"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/btn_logout"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="로그아웃"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="104dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="348dp"
+        android:background="@color/quantum_googgreen50"
+        android:foregroundGravity="center"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getid" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077"
+        app:srcCompat="@drawable/bye" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="2dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
-        app:layout_constraintTop_toBottomOf="@+id/btn_logout" />
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:background="@color/quantum_googgreen50"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getid"
+        app:layout_constraintVertical_bias="0.313"
+        app:srcCompat="@drawable/bike" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_ach"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="419dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="9dp"
+        android:background="@color/quantum_googgreen50"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511"
+        app:srcCompat="@drawable/winner" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:text="업적보기"
-        app:layout_constraintStart_toStartOf="@+id/btn_map"
-        app:layout_constraintTop_toBottomOf="@+id/btn_map" />
+        android:layout_marginStart="94dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="292dp"
+        android:shadowColor="@color/black"
+        android:text="공원찾기"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ach"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="204dp"
+        android:text="업적"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ach"
+        app:layout_constraintStart_toStartOf="@+id/btn_ach"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ach" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

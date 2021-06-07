@@ -1,11 +1,7 @@
 package com.SMP.dodamdodam;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 
-import com.SMP.dodamdodam.Activity.MainActivity;
-import com.SMP.dodamdodam.Activity.loginActivity;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;

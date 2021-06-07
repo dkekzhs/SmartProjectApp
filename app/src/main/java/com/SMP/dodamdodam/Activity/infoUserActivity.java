@@ -1,10 +1,5 @@
 package com.SMP.dodamdodam.Activity;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,10 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.SMP.dodamdodam.R;
 import com.SMP.dodamdodam.Request.NameInputRequest;
 import com.SMP.dodamdodam.Request.NameRequest;
-import com.SMP.dodamdodam.Request.ValidateRequest;
 import com.SMP.dodamdodam.SharedPreferenceBean;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,7 +26,8 @@ import org.json.JSONObject;
 public class infoUserActivity extends AppCompatActivity {
         TextView txtinfo2;
         EditText editName;
-        Button btnNameChk, btnStart;
+        Button btnStart;
+        Button btnNameChk;
         String NameChk1,NameChk2;
 
     @Override
@@ -97,50 +94,62 @@ public class infoUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NameChk2 = editName.getText().toString();
-                if(NameChk1.equals(NameChk2)){//true문
+                if(NameChk2.equals("")){
+                    txtinfo2.setText("닉네임을 설정해주세요");
+                    txtinfo2.setTextColor(Color.parseColor("#FF0000"));
+                    txtinfo2.setTypeface(null, Typeface.BOLD);
+                    return;
+                }
+                else{
+                    if(NameChk1.equals(NameChk2)){//true문
 
-                    String UserEmail = SharedPreferenceBean.getAttribute(getApplication(),"UserEmail");
-                    String UserPlatform = SharedPreferenceBean.getAttribute(getApplication(),"UserPlatform");
-                    Response.Listener<String> responseListener = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                boolean success = jsonObject.getBoolean("success");
+                        String UserEmail = SharedPreferenceBean.getAttribute(getApplication(),"UserEmail");
+                        String UserPlatform = SharedPreferenceBean.getAttribute(getApplication(),"UserPlatform");
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    boolean success = jsonObject.getBoolean("success");
 
-                                if (success) { // 로그인에 성공한 경우
-                                    System.out.print(success);
-                                    String getUserName = jsonObject.getString("UserName");
-                                    String getUserEmail = jsonObject.getString("UserEmail");
-                                    String getUserRegister = jsonObject.getString("UserRegister");
+                                    if (success) { // 로그인에 성공한 경우
+                                        System.out.print(success);
+                                        String getUserName = jsonObject.getString("UserName");
+                                        String getUserEmail = jsonObject.getString("UserEmail");
+                                        String getUserRegister = jsonObject.getString("UserRegister");
 
 
-                                    SharedPreferenceBean.setAttribute(getApplication(),"UserEmail",getUserEmail);
-                                    SharedPreferenceBean.setAttribute(getApplication(),"UserPlatform",getUserRegister);
-                                    SharedPreferenceBean.setAttribute(getApplication(),"UserName",getUserName);
+                                        SharedPreferenceBean.setAttribute(getApplication(),"UserEmail",getUserEmail);
+                                        SharedPreferenceBean.setAttribute(getApplication(),"UserPlatform",getUserRegister);
+                                        SharedPreferenceBean.setAttribute(getApplication(),"UserName",getUserName);
                                         Intent intent = new Intent(infoUserActivity.this, MainActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
 
 
-                                } else { // 로그인에 실패한 경우
-                                    Toast.makeText(getApplicationContext(), "닉네임 설정 중 오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
-                                    return;
+                                    } else { // 로그인에 실패한 경우
+                                        Toast.makeText(getApplicationContext(), "닉네임 설정 중 오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
-                    };
-                    NameInputRequest nameInputRequest = new NameInputRequest(NameChk1,UserEmail,UserPlatform,responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(infoUserActivity.this);
-                    queue.add(nameInputRequest);
-                }
+                        };
+                        NameInputRequest nameInputRequest = new NameInputRequest(NameChk1,UserEmail,UserPlatform,responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(infoUserActivity.this);
+                        queue.add(nameInputRequest);
+
+                    }
                 else{
-                    txtinfo2.setText("확인버튼을 다시 누르고 시도해주세요.");
-                    txtinfo2.setTextColor(Color.parseColor("#FF0000"));
-                    txtinfo2.setTypeface(null, Typeface.BOLD);
+                        txtinfo2.setText("닉네임을 제대로 입력해주세요.");
+                        txtinfo2.setTextColor(Color.parseColor("#FF0000"));
+                        txtinfo2.setTypeface(null, Typeface.BOLD);
+                    }
                 }
+
+
+
             }
         });
     }

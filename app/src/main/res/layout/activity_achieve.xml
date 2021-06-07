@@ -3,154 +3,159 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-android:layout_height="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1.0">
-<androidx.cardview.widget.CardView
-    android:id="@+id/Ach1Card1"
-    android:layout_width="match_parent"
-android:layout_height="0dp"
-    android:layout_weight="0.333"
-    app:cardCornerRadius="8dp"
-    app:cardUseCompatPadding="true">
+    android:weightSum="1.0"
+    >
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="right|center_horizontal|center_vertical"
-    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Ach1Card1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.333"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txtAchBig1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom|center_horizontal"
-            android:text="걸음 수 업적"
-            android:textSize="24sp" />
+            android:layout_height="match_parent"
+            android:gravity="right|center_horizontal|center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtAchSmall1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|top"
-            android:text="완료" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/Ach1"
-        android:src="@drawable/diploma"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        />
+                <TextView
+                    android:id="@+id/txtAchBig1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="걸음 수 업적"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/txtAchSmall1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|top"
+                    android:text="완료" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/Ach1"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/diploma" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
-<androidx.cardview.widget.CardView
-android:id="@+id/Ach1Card2"
-android:layout_width="match_parent"
-android:layout_height="0dp"
-android:layout_weight="0.333"
-app:cardCornerRadius="8dp"
-app:cardUseCompatPadding="true">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Ach1Card2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.333"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="right|center_horizontal|center_vertical"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txtAchBig2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom|center_horizontal"
-            android:text="첫 로그인 업적"
-            android:textSize="24sp" />
+            android:layout_height="match_parent"
+            android:gravity="right|center_horizontal|center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtAchSmall2"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtAchBig2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="첫 로그인 업적"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtAchSmall2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|top"
+                    android:text="완료" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/Ach2"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/mortarboard" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Ach1Card3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.333"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|top"
-            android:text="완료" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:gravity="right|center_horizontal|center_vertical"
+            android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/Ach2"
-        android:src="@drawable/mortarboard"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtAchBig3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="아직 설정 안한 업적"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtAchSmall3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|top"
+                    android:text="완료" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/Ach3"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/medal" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
 
 </LinearLayout>
-</androidx.cardview.widget.CardView>
-<androidx.cardview.widget.CardView
-android:id="@+id/Ach1Card3"
-android:layout_width="match_parent"
-android:layout_height="0dp"
-android:layout_weight="0.333"
-app:cardCornerRadius="8dp"
-app:cardUseCompatPadding="true">
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="right|center_horizontal|center_vertical"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txtAchBig3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom|center_horizontal"
-            android:text="아직 설정 안한 업적"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txtAchSmall3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|top"
-            android:text="완료" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/Ach3"
-        android:src="@drawable/medal"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        />
-
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-
-
-
-    </LinearLayout>

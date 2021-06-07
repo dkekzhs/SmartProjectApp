@@ -4,67 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/quantum_amber50"
     tools:context=".Activity.infoUserActivity">
 
     <TextView
         android:id="@+id/txtInfo"
-        android:layout_width="382dp"
-        android:layout_height="184dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:gravity="center"
-        android:text="안녕하세요 도담도담 어플에 오신걸 환영합니다!"
-        android:textSize="36dp"
+        android:text="안녕하세요\n도담도담 어플에 오신걸 환영합니다!"
+        android:textColor="@color/black"
+        android:textColorHighlight="#03A9F4"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtInfo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="어플 사용전 닉네임을 설정해주세요"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInfo" />
-
     <EditText
         android:id="@+id/EdtName"
-        android:layout_width="238dp"
+        android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_margin="30dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/btnInfoChk"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInfo2" />
 
     <Button
         android:id="@+id/btnInfoSub"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#FFE694"
         android:layout_margin="15dp"
+        android:layout_marginBottom="88dp"
+        android:textStyle="bold"
         android:text="도담도담 시작하기"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnInfoChk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="Button"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_round"
+        android:text="중복 확인"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/EdtName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/EdtName"
-        app:layout_constraintTop_toTopOf="@+id/EdtName" />
+        app:layout_constraintTop_toTopOf="@+id/EdtName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtInfo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="어플 사용 전 닉네임을 설정해주세요"
+        android:textColor="@color/quantum_googyellow800"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

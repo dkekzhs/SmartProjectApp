@@ -2,8 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
-
+    android:background="@color/quantum_amber50">
 
 
     <ImageView
@@ -11,32 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="#EEEEEE"
-        android:scaleType="fitXY"/>
-
+        android:scaleType="centerInside" />
 
 
     <Button
 
         android:id="@+id/btn_upload_image"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@color/ButtonColor"
+        android:text="이미지 분석.."
         android:textAllCaps="false"
-        android:layout_marginTop="20dp"
-        android:text="Image upload to server"
-        android:layout_gravity="center"/>
+        android:textColor="@color/places_autocomplete_prediction_primary_text"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txtTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:hint="맛있는건"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/txtTest2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:hint="0kcal"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
 
 </LinearLayout>

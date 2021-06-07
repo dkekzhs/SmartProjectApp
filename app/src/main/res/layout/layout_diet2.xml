@@ -3,27 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/MainColorLightMid">
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
+
+    <ImageButton
+        android:id="@+id/back2"
+        android:layout_width="52dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center|left"
+        android:scaleType="centerCrop"
+        app:backgroundTint="@color/MainColorLightMid"
+        app:srcCompat="@drawable/exercise" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="back" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="3dp"
-            android:src="@drawable/diet" />
-        <TextView
-            android:id="@+id/textview1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="근력 운동은 왜 해야할까?"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="  근력 운동은 왜 해야할까?"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,54 +50,88 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textview9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:text="1. 지방 → 근육"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
+
+            <TextView
                 android:id="@+id/textview2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="1. 지방대신 근육\n 몸에 지방대신 근육이 생기게 된다.\n 근육의 사이즈는 지방에 비해 반 정도 밖에 되지않아 신체 사이즈가 줄어든다.
-여성이 하는 가장 큰 오해가 근육운동을 하면 납성처럼 큰 근육을 가지게될까 두려워하는 경향이 있다. 하지만 여성 호르몬인 에스트로겐은 근육에 많은 도움이 되지 않기 때문에 걱정하지 않아도 됩니다." />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="몸에 근육이 생기게 된다. \n근육의 사이즈는 지방의 반밖에 되지 않아 신체 사이즈가 줄어든다. \n운동을 처음 하는 여성들 중엔 근육 운동을 하면 남성처럼 큰 근육을 가지게 될까 두려워하는 여성들도 있다. \n하지만 여성 호르몬인 에스트로겐은 근육에 많은 도움이 되지 않기 때문에 걱정하지 않아도 된다."
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textview10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:text="2. 기초대사량 증가"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textview3"
                 android:layout_width="wrap_content"
-                android:layout_height="132dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="2. 기초대사량 증가\n 기초대사량이 증가하면 운동을 안하고 있는 휴식 상태에서도 더 많은 칼로리를 소모하게 되고 지방 사용량도 증가하게 됩니다.\n 근육은 지방보다 에너지를 더욱 많이 필요하기 때문이다. 따라서 근육량이 많으면 더 많은 칼로리를 소모하게 되고, 결과적으로 지방이 감소하게 되어 살이 빠지게 된다." />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="기초 대사량이 증가하면 휴식 상태에서도 많은 칼로리를 소모하게 되고 지방 사용량도 증가하게 된다. \n근육은 지방보다 많은 에너지가 필요하기 때문에 근육량이 많으면 더 많은 칼로리를 소모하게 되고, 결과적으로 살이 빠지게 된다."
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textview8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:text="3. 운동대사량 증가"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textview4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="3. 운동대사량 증가 \n 운동대사량이란 움직일 때 소비되는 에너지를 이야기 한다. 운동 대사량이 올라가게 되면, 같은 운동을 하더라도 운동의 효과가 커지게 된다." />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="운동 대사량이란 움직일 때 소비되는 에너지를 이야기 한다. \n운동 대사량이 올라가면, 같은 운동을 해도 운동의 효과가 커진다."
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textview11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:text="4. 근력운동의 오해"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textview5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:textColor="#000000"
-                android:bufferType="spannable"
-                android:text="4. 근력운동의 오해 \n수분 체류현상이란? 운동을 하면 세포가 손상된다. 그 손상된 세포를 보호하기 위해 몸에서 수분을 저장해두는 현상을 말한다. 그 현상으로 인해 운동을 하면 약간 붓거나 두꺼워진 것 같은 경우가 생긴다. 하지만 일시적인 현상이므로 보윻하고 있던 수분은 다시 배출되어 붓기가 빠지게 된다." />
-
-            <Button
-                android:id="@+id/back2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:backgroundTintMode="add"
-                android:text="back"
-                app:backgroundTint="#d3d3d3" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="수분 체류현상이란? \n운동을 하면 세포가 손상되는데 그 손상된 세포를 보호하기 위해 몸에서 수분을 저장해두는 현상을 말한다. \n수분 체류현상으로 인해 운동을 하면 약간 붓거나 두꺼워진 것 같은 경우가 생기는데 일시적인 현상으로 수분은 배출되어 붓기가 빠진다."
+                android:textColor="#000000" />
 
         </LinearLayout>
     </ScrollView>
