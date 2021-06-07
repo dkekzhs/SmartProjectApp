@@ -1,25 +1,19 @@
 package com.SMP.dodamdodam.Activity;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.WorkerThread;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.SMP.dodamdodam.R;
 import com.android.volley.AuthFailureError;
@@ -29,31 +23,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.location.LocationServices;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class WeatherActivity extends AppCompatActivity {
-    TextView weatherView, temView, exerciseView;
-    Button getWeather, goTube;
+    ImageView weatherView;
+    ImageButton TouchMe;
+    TextView temView, weatherTextView, TouchMeText;
+    Button btn_tube;
     String keyword;
     static RequestQueue requestQueue;
 
@@ -63,17 +49,31 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
 
         weatherView = findViewById(R.id.weatherView);
+        weatherTextView = findViewById(R.id.weatherTextView);
         temView = findViewById(R.id.temView);
+        TouchMe = findViewById(R.id.TouchMe);
+        TouchMeText = findViewById(R.id.TouchMeText);
+        btn_tube = findViewById(R.id.btn_tube);
 
-        getWeather = findViewById(R.id.getAPI);
-        getWeather.setOnClickListener(new View.OnClickListener() {
+        weatherView.setVisibility(View.GONE);
+        weatherTextView.setVisibility(View.GONE);
+        temView.setVisibility(View.GONE);
+        btn_tube.setVisibility(View.GONE);
+
+        TouchMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CurrentWeatherCall();
+                weatherView.setVisibility(View.VISIBLE);
+                weatherTextView.setVisibility(View.VISIBLE);
+                temView.setVisibility(View.VISIBLE);
+                btn_tube.setVisibility(View.VISIBLE);
+                TouchMeText.setVisibility(View.GONE);
             }
         });
-        goTube = findViewById(R.id.btn_tube);
-        goTube.setOnClickListener(new View.OnClickListener() {
+
+
+        btn_tube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WeatherActivity.this, tubetube.class);
@@ -124,7 +124,10 @@ public class WeatherActivity extends AppCompatActivity {
                     String weather_main = weatherObj.getString("main");
                     String weather = weatherObj.getString("description");
 
-                    weatherView.setText(weather);
+                    String weather_icon = weatherObj.getString("icon");
+                    String imageUrl = "http://openweathermap.org/img/wn/" + weather_icon + "@2x.png";
+                    Picasso.get().load(imageUrl).resize(500, 500).into(weatherView);
+                    weatherTextView.setText(weather);
 
                     //기온 키값 받기
                     JSONObject tempK = new JSONObject(jsonObject.getString("main"));
@@ -133,6 +136,7 @@ public class WeatherActivity extends AppCompatActivity {
                     double tempDo = (Math.round((tempK.getDouble("temp") - 273.15) * 100) / 100.0);
                     temView.setText(tempDo + "°C");
                     Log.d("TAG", "날씨 : " + url);
+
                     //운동 판단
                     String in = "실내운동";
                     String out = "야외운동";
