@@ -1,13 +1,19 @@
 package com.SMP.dodamdodam;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
@@ -19,7 +25,7 @@ public class SingerItemView extends LinearLayout {
     //어디서든 사용할 수 있게하려면
     TextView textView, textView2;
     ImageView imageView2;
-
+    LinearLayout linearLayout;
     public SingerItemView(Context context) {
         super(context);
         init(context);//인플레이션해서 붙여주는 역
@@ -39,6 +45,7 @@ public class SingerItemView extends LinearLayout {
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         imageView2 = findViewById(R.id.imageView2);
+        linearLayout = findViewById(R.id.listV);
     }
 
     public void setName(String name){
@@ -50,4 +57,6 @@ public class SingerItemView extends LinearLayout {
     public void setImage(Bitmap resId){
         imageView2.setImageBitmap(resId);
     }
+
+
 }

@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -77,7 +78,7 @@ public class tubetube extends AppCompatActivity {
     ListView listTest;
     Bitmap bitmap;
     URL url;
-
+    static String [] query;
     public static Bitmap StringToBitmap(String url) {
         try { byte[] encodeByte = Base64.decode(url, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
@@ -130,12 +131,19 @@ public class tubetube extends AppCompatActivity {
             } else {
                 singerItemView = (SingerItemView)convertView;
             }
+            final String base_url = "https://www.youtube.com/watch?v=";
             Singeritem item = items.get(position);
             singerItemView.setName(item.getName());
             singerItemView.setMobile(item.getMobile());
             singerItemView.setImage(item.getResId());
 
-
+            singerItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(base_url + item.getQuery()));
+                    startActivity(browserIntent);
+                }
+            });
 
             return singerItemView;
         }
@@ -157,7 +165,7 @@ public class tubetube extends AppCompatActivity {
         Log.d("TAG", "운동 추천 : " + keyword);
         Log.d("TAG", "운동 추천 인코딩 : " + encodeKeyword);
 
-        String url4 = "http://1aa171b03a29.ngrok.io//video_list?key=AIzaSyCqEZTPQlS48rUKlRxe2sMvV1UXpK4F3ZM&&query=" + encodeKeyword;
+        String url4 = "http://6ec262a09dad.ngrok.io//video_list?key=AIzaSyCqEZTPQlS48rUKlRxe2sMvV1UXpK4F3ZM&&query=" + encodeKeyword;
         StringRequest stringRequest3 = new StringRequest(Request.Method.POST,url4, new Response.Listener<String>() {
             ListView listTest = findViewById(R.id.listTest);
             SingerAdapter adapter = new SingerAdapter();
@@ -169,6 +177,8 @@ public class tubetube extends AppCompatActivity {
 
                     JSONObject  jsonObject = new JSONObject(response);
                     Log.d("TAG", String.valueOf(jsonObject));
+                    query = new String[jsonObject.length()];
+
                     for(int i =0;i<jsonObject.length();i++){
                         String a = jsonObject.getString(Integer.toString(i));
                         JSONObject jsonobj = new JSONObject(a);
@@ -176,7 +186,7 @@ public class tubetube extends AppCompatActivity {
                         String c =  jsonobj.getString("title");
                         String d = jsonobj.getString("description");
                         String youtubeurl = jsonobj.getString("url");
-
+                        query[i] = b;
 
 
                         // 안드로이드에서 네트워크와 관련된 작업을 할 때,
@@ -211,7 +221,7 @@ public class tubetube extends AppCompatActivity {
                             // 메인 Thread는 별도의 작업 Thread가 작업을 완료할 때까지 대기해야한다
                             // join()를 호출하여 별도의 작업 Thread가 종료될 때까지 메인 Thread가 기다리게 한다
                             mThread.join();
-                            adapter.addItem(new Singeritem(c,d,bitmap));
+                            adapter.addItem(new Singeritem(c,d,bitmap,b));
                             // 작업 Thread에서 이미지를 불러오는 작업을 완료한 뒤
                             // UI 작업을 할 수 있는 메인 Thread에서 ImageView에 이미지를 지정한다
 

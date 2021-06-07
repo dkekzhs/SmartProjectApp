@@ -11,11 +11,22 @@ public class Singeritem {
     String mobile;
     Bitmap resId;
 
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    String query;
+
     //생성
-    public Singeritem(String name, String mobile, Bitmap resId) {
+    public Singeritem(String name, String mobile, Bitmap resId,String query) {
         this.name = name;
         this.mobile = mobile;
         this.resId = resId;
+        this.query = query;
     }
 
 
