@@ -28,7 +28,7 @@ public class UserFragment extends Fragment {
     ImageButton btn_logout;
     private View view;
     ImageButton btn_ach;
-    Button btn_weather;
+    ImageButton btn_weather;
 
     @Override
     public void onStart() {

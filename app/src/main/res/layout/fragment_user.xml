@@ -40,44 +40,62 @@
         android:id="@+id/btn_map"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="68dp"
         android:background="@color/quantum_googgreen50"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getid"
-        app:layout_constraintVertical_bias="0.313"
+        app:layout_constraintVertical_bias="0.153"
         app:srcCompat="@drawable/bike" />
+
 
     <ImageButton
         android:id="@+id/btn_ach"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:layout_marginTop="419dp"
-        android:layout_marginEnd="64dp"
         android:layout_marginBottom="9dp"
         android:background="@color/quantum_googgreen50"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_map"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.511"
         app:srcCompat="@drawable/winner" />
 
+    <ImageButton
+        android:id="@+id/btn_weather"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/quantum_googgreen50"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_ach"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map"
+        app:layout_constraintVertical_bias="0.731"
+        app:srcCompat="@drawable/exer" />
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="94dp"
+        android:layout_width="55dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="75dp"
-        android:layout_marginBottom="292dp"
+        android:layout_marginBottom="360dp"
         android:shadowColor="@color/black"
         android:text="공원찾기"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ach"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.345"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView4"
@@ -91,17 +109,18 @@
         app:layout_constraintStart_toStartOf="@+id/btn_ach"
         app:layout_constraintTop_toBottomOf="@+id/btn_ach" />
 
-    <Button
-        android:id="@+id/btn_weather"
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="146dp"
-        android:text="Button"
+        android:text="운동영상"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="@+id/btn_weather"
+        app:layout_constraintTop_toBottomOf="@+id/btn_weather"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
