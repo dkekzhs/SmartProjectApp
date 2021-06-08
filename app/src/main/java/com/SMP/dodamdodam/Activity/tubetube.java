@@ -78,7 +78,7 @@ public class tubetube extends AppCompatActivity {
     ListView listTest;
     Bitmap bitmap;
     URL url;
-    static String [] query;
+    String flaskserver;
     public static Bitmap StringToBitmap(String url) {
         try { byte[] encodeByte = Base64.decode(url, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
@@ -164,8 +164,8 @@ public class tubetube extends AppCompatActivity {
         String encodeKeyword = getURLEncode(keyword);
         Log.d("TAG", "운동 추천 : " + keyword);
         Log.d("TAG", "운동 추천 인코딩 : " + encodeKeyword);
-
-        String url4 = "http://6ec262a09dad.ngrok.io//video_list?key=AIzaSyCqEZTPQlS48rUKlRxe2sMvV1UXpK4F3ZM&&query=" + encodeKeyword;
+        flaskserver = getString(R.string.flaskserver);
+        String url4 = flaskserver +"/video_list?key=AIzaSyCqEZTPQlS48rUKlRxe2sMvV1UXpK4F3ZM&&query=" + encodeKeyword;
         StringRequest stringRequest3 = new StringRequest(Request.Method.POST,url4, new Response.Listener<String>() {
             ListView listTest = findViewById(R.id.listTest);
             SingerAdapter adapter = new SingerAdapter();
@@ -177,7 +177,7 @@ public class tubetube extends AppCompatActivity {
 
                     JSONObject  jsonObject = new JSONObject(response);
                     Log.d("TAG", String.valueOf(jsonObject));
-                    query = new String[jsonObject.length()];
+
 
                     for(int i =0;i<jsonObject.length();i++){
                         String a = jsonObject.getString(Integer.toString(i));
@@ -186,7 +186,7 @@ public class tubetube extends AppCompatActivity {
                         String c =  jsonobj.getString("title");
                         String d = jsonobj.getString("description");
                         String youtubeurl = jsonobj.getString("url");
-                        query[i] = b;
+
 
 
                         // 안드로이드에서 네트워크와 관련된 작업을 할 때,
@@ -228,9 +228,6 @@ public class tubetube extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
-
-
 
                         Log.d("TAG1", b);
                         Log.d("TAG2", c);

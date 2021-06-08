@@ -59,7 +59,7 @@ public class TestFragment extends Fragment {
     private TextView txttest,txttest2;
     private String getImageName;
     Bitmap image;
-
+    String flaskserver;
     String uploadurl ="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/upload.php";
     String getInfourl ="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/getInfoImage.php";
     ProgressDialog progressDialog;
@@ -108,10 +108,10 @@ public class TestFragment extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String a= jsonObject.getString("Message");
+                            flaskserver = getString(R.string.flaskserver);
 
 
-
-                            Url = "http://e2aa6d03f83c.ngrok.io/predict?url="+a;
+                            Url = flaskserver +"predict?url="+a;
                             mThread  mthread =new mThread();
                             mthread.start();
 
