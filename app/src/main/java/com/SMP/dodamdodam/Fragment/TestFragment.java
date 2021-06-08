@@ -103,7 +103,7 @@ public class TestFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-                        Toast.makeText(getActivity().getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
