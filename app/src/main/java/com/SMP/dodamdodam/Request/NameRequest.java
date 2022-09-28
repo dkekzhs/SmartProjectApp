@@ -13,7 +13,7 @@ import static android.content.ContentValues.TAG;
 
 public class NameRequest extends StringRequest {
     //서버 url 설정(php파일 연동)
-    final static  private String URL="http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/UserNameChk.php";
+    final static  private String URL="localhost/UserNameChk.php";
     private Map<String, String> map;
 
     public NameRequest(String Name, Response.Listener<String> listener){
