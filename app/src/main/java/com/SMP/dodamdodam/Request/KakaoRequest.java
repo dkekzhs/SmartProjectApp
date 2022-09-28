@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class KakaoRequest extends StringRequest {
     //서버 URL 설정(php 파일 연동)
-    final static private String URL = "http://ec2-52-79-44-86.ap-northeast-2.compute.amazonaws.com/kakaologin.php";
+    final static private String URL = "localhost/kakaologin.php";
     private static final String TAG = "testlog?";
     private Map<String, String> map;
 
